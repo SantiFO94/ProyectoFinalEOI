@@ -1,0 +1,22 @@
+01:19:06 - USUARIO: Help
+01:19:06 - ALEOIXA: Puedes pedirme cualquiera de estas cosas:
+01:19:06 - ALEOIXA: ¿Qué día es?
+01:19:06 - ALEOIXA: ¿Qué hora es?
+01:19:06 - ALEOIXA: Cuentame un chiste
+01:19:06 - ALEOIXA: Calcula
+01:19:06 - ALEOIXA: Traduce
+01:19:06 - ALEOIXA: Help
+01:19:06 - ALEOIXA: Salir
+01:19:21 - USUARIO: ¿Qué día es?
+01:19:21 - ALEOIXA: 19/01/2021
+01:19:30 - USUARIO: Salir
+01:23:45 - USUARIO: Traduce
+01:23:45 - ALEOIXA: ¿Qué fruta desea traducir?
+01:23:50 - USUARIO: Manzana
+01:23:50 - ALEOIXA: Apple
+01:23:56 - USUARIO: Calcula
+01:23:56 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento ("número signo número"):
+01:24:07 - USUARIO: 78 - 3
+01:24:07 - ALEOIXA: 75.0
+01:24:13 - USUARIO: Salir
+01:24:13 - ALEOIXA: ¡Hasta pronto!
