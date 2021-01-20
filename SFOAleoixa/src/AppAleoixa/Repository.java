@@ -18,7 +18,7 @@ public class Repository {
 
 	public static Comando elegirComando() {
 		
-		Comando eleccion = null;
+		Comando comando = null;
 		String instruccion = null;
 //		try {
 			System.out.println("¿En qué puedo ayudarle?");
@@ -28,23 +28,29 @@ public class Repository {
 //			System.out.println("Ese comando no es válido.");
 //			elegirComando();
 //		}
-		if (instruccion.equals(Comando.DIA.comando)) {
-			eleccion = Comando.DIA;
-		} else if (instruccion.equals(Comando.HORA.comando)) {
-			eleccion = Comando.HORA;
-		} else if (instruccion.equals(Comando.CHISTE.comando)) {
-			eleccion = Comando.CHISTE;
-		} else if (instruccion.equals(Comando.CALCULADORA.comando)) {
-			eleccion = Comando.CALCULADORA;
-		} else if (instruccion.equals(Comando.TRADUCTOR.comando)) {
-			eleccion = Comando.TRADUCTOR;
-		} else if (instruccion.equals(Comando.AYUDA.comando)) {
-			eleccion = Comando.AYUDA;
-		} else if (instruccion.equals(Comando.SALIR.comando)) {
-			eleccion = Comando.SALIR;
+			
+		for(Comando comandoTemporal : Comando.values()) {
+			if (instruccion.equalsIgnoreCase(comandoTemporal.toString())) {
+				comando = comandoTemporal;
+			}
 		}
+//		if (instruccion.equals(Comando.DIA.comando)) {
+//			comando = Comando.DIA;
+//		} else if (instruccion.equals(Comando.HORA.comando)) {
+//			comando = Comando.HORA;
+//		} else if (instruccion.equals(Comando.CHISTE.comando)) {
+//			comando = Comando.CHISTE;
+//		} else if (instruccion.equals(Comando.CALCULADORA.comando)) {
+//			comando = Comando.CALCULADORA;
+//		} else if (instruccion.equals(Comando.TRADUCTOR.comando)) {
+//			comando = Comando.TRADUCTOR;
+//		} else if (instruccion.equals(Comando.AYUDA.comando)) {
+//			comando = Comando.AYUDA;
+//		} else if (instruccion.equals(Comando.SALIR.comando)) {
+//			comando = Comando.SALIR;
+//		}
 		
-		return eleccion;
+		return comando;
 	}
 	
 	public static void help() {
@@ -127,24 +133,30 @@ public class Repository {
 		String operacionProcesada[] = operacionIntroducida.split(" ");
 		String operador = operacionProcesada[1];
 
-		if (operador.equals("+")) {
-			System.out.println(Double.parseDouble(operacionProcesada[0]) + Double.parseDouble(operacionProcesada[2]));
-			loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) + Double.parseDouble(operacionProcesada[2])));
-		} else if (operador.equals("-")) {
-			System.out.println(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2]));
-			loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2])));
-		} else if (operador.equals("*")) {
-			System.out.println(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2]));
-			loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2])));
-		} else if (operador.equals("/")) {
-			if (Double.parseDouble(operacionProcesada[0]) == 0.0 || Double.parseDouble(operacionProcesada[2]) == 0.0) {
-				System.out.println("Operación invalida");
-				loguear("ALEOIXA", "Operación invalida");
-			} else {
-				System.out.println(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2]));
-				loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2])));
-			}
+		try {
+			if (operador.equals("+")) {
+				System.out.println(Double.parseDouble(operacionProcesada[0]) + Double.parseDouble(operacionProcesada[2]));
+				loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) + Double.parseDouble(operacionProcesada[2])));
+			} else if (operador.equals("-")) {
+				System.out.println(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2]));
+				loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2])));
+			} else if (operador.equals("*")) {
+				System.out.println(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2]));
+				loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2])));
+			} else if (operador.equals("/")) {
+//				if (Double.parseDouble(operacionProcesada[0]) == 0.0 || Double.parseDouble(operacionProcesada[2]) == 0.0) {
+//					System.out.println("Operación invalida");
+//					loguear("ALEOIXA", "Operación invalida");
+//					
+//				} else {
+					System.out.println(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2]));
+					loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2])));
+//				}
 
+			}
+		} catch (ArithmeticException e) {
+			System.out.println("Operación inválida");
+			loguear("ALEOIXA", "Operación invalida");
 		}
 		System.out.println();
 	}
@@ -205,7 +217,7 @@ public class Repository {
 				
 			fw.close();
 		} catch (IOException e) {
-			System.out.println("Valor nulo");;
+			System.out.println("Ha habido un problema modificando el archivo");;
 		}
 	}
 
