@@ -1,4 +1,4 @@
-package AppAleoixa;
+package edu.eoi.repository;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,19 +20,22 @@ public class Repository {
 		
 		Comando comando = null;
 		String instruccion = null;
-//		try {
+		try {
 			System.out.println("¿En qué puedo ayudarle?");
 			instruccion = sctexto.nextLine();
 			loguear("USUARIO", instruccion);
-//		} catch (Exception e) {
-//			System.out.println("Ese comando no es válido.");
-//			elegirComando();
-//		}
 			
-		for(Comando comandoTemporal : Comando.values()) {
-			if (instruccion.equalsIgnoreCase(comandoTemporal.toString())) {
-				comando = comandoTemporal;
+			for(Comando comandoTemporal : Comando.values()) {
+				if (instruccion.equalsIgnoreCase(comandoTemporal.toString())) {
+					comando = comandoTemporal;
+				}else {
+					int i = 1/0;
+				}
 			}
+		} catch (Exception e) {
+			System.out.println("El comando ".concat(instruccion).concat(" no es válido.\n"));
+			loguear("ALEOIXA", "El comando ".concat(instruccion).concat(" no es válido."));
+			elegirComando();
 		}
 //		if (instruccion.equals(Comando.DIA.comando)) {
 //			comando = Comando.DIA;

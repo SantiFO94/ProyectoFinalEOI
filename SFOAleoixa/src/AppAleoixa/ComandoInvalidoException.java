@@ -1,5 +1,7 @@
 package AppAleoixa;
 
+import edu.eoi.repository.Comando;
+
 public class ComandoInvalidoException extends Exception {
 
 	private static final long serialVersionUID = 1L;

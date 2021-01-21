@@ -3,6 +3,9 @@ package AppAleoixa;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import edu.eoi.repository.Comando;
+import edu.eoi.repository.Repository;
+
 public class MainApp {
 
 	public static void main(String[] args) {

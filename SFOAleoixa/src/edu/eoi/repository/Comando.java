@@ -1,4 +1,4 @@
-package AppAleoixa;
+package edu.eoi.repository;
 
 public enum Comando {
 
