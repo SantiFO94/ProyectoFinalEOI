@@ -29,7 +29,7 @@ public class Repository {
 				if (instruccion.equalsIgnoreCase(comandoTemporal.toString())) {
 					comando = comandoTemporal;
 				}else {
-					int i = 1/0;
+					throw new Exception();
 				}
 			}
 		} catch (Exception e) {
@@ -37,22 +37,7 @@ public class Repository {
 			loguear("ALEOIXA", "El comando ".concat(instruccion).concat(" no es válido."));
 			elegirComando();
 		}
-//		if (instruccion.equals(Comando.DIA.comando)) {
-//			comando = Comando.DIA;
-//		} else if (instruccion.equals(Comando.HORA.comando)) {
-//			comando = Comando.HORA;
-//		} else if (instruccion.equals(Comando.CHISTE.comando)) {
-//			comando = Comando.CHISTE;
-//		} else if (instruccion.equals(Comando.CALCULADORA.comando)) {
-//			comando = Comando.CALCULADORA;
-//		} else if (instruccion.equals(Comando.TRADUCTOR.comando)) {
-//			comando = Comando.TRADUCTOR;
-//		} else if (instruccion.equals(Comando.AYUDA.comando)) {
-//			comando = Comando.AYUDA;
-//		} else if (instruccion.equals(Comando.SALIR.comando)) {
-//			comando = Comando.SALIR;
-//		}
-		
+
 		return comando;
 	}
 	
@@ -194,7 +179,7 @@ public class Repository {
 		loguear("ALEOIXA", "¿Qué fruta desea traducir?");
 		String fruta = sctexto.nextLine();
 		loguear("USUARIO", fruta);
-
+		//español-ingles
 		for (String palabra : DiccionarioEspañolIngles.keySet()) {
 			if (fruta.equalsIgnoreCase(palabra)) {
 				System.out.println(DiccionarioEspañolIngles.get(palabra));
@@ -202,7 +187,8 @@ public class Repository {
 				break;
 			}
 		}
-		for (String palabra : DiccionarioInglesEspañol.keySet()) {
+		//ingles-español
+				for (String palabra : DiccionarioInglesEspañol.keySet()) {
 			if (fruta.equalsIgnoreCase(palabra)) {
 				System.out.println(DiccionarioInglesEspañol.get(palabra));
 				loguear("ALEOIXA", DiccionarioInglesEspañol.get(palabra));
