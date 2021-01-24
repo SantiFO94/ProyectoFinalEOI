@@ -2,20 +2,20 @@ package edu.eoi.entity;
 
 public class Gato extends Mascota{
 
-	private Integer edad;
+	private String edad;
 
 	public Gato(String imagen, String nombre, String ubicacion, String descripcion,
-			String nombreResponsable, Integer telefonoResponsable, Integer edad) {
+			Integer idResponsable, String edad) {
 		super();
 		this.tipoDeMascota = TipoDeMascota.GATO;
 		this.edad = edad;
 	}
 
-	public Integer getEdad() {
+	public String getEdad() {
 		return edad;
 	}
 
-	public void setEdad(Integer edad) {
+	public void setEdad(String edad) {
 		this.edad = edad;
 	}
 	

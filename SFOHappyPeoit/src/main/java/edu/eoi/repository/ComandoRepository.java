@@ -16,15 +16,16 @@ public class ComandoRepository {
 			instruccion = sctexto.nextLine();
 			
 			for(Comando comandoTemporal : Comando.values()) {
-				if (instruccion.equalsIgnoreCase(comandoTemporal.toString())) {
+				if (instruccion.equalsIgnoreCase(comandoTemporal.comando)) {
 					comando = comandoTemporal;
-				}else {
-					int i = 1/0;
 				}
+			}
+			if (comando.equals(null)) {
+				throw new Exception();
 			}
 		} catch (Exception e) {
 			System.out.println("El comando ".concat(instruccion).concat(" no es válido.\n"));
-			introducirComando();
+			comando = introducirComando();
 		}
 		return comando;
 	}

@@ -1,11 +1,15 @@
 package edu.eoi.repository;
 
+import edu.eoi.service.InformesService;
 import edu.eoi.ui.MenuBuscar;
 import edu.eoi.ui.MenuCrear;
 import edu.eoi.ui.MenuEliminar;
+import edu.eoi.ui.MenuInicio;
 import edu.eoi.ui.MenuModificar;
 
 public class MenuRepository {
+	
+	static InformesService InformesService = new InformesService();
 
 	public static void elegirMenu(Comando comandoAceptado) {
 		
@@ -27,7 +31,8 @@ public class MenuRepository {
 				break;
 				
 			case GENERAR:
-	
+				InformesService.generarInformes();
+				MenuInicio.printMenuInicio();
 				break;
 			
 			case HELP:

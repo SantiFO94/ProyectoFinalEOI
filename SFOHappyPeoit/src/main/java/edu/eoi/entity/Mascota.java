@@ -2,13 +2,22 @@ package edu.eoi.entity;
 
 public abstract class Mascota {
 
+	protected Integer id;
 	protected String imagen;
 	protected String nombre;
 	protected String ubicacion;
 	protected String descripcion;
-	protected String nombreResponsable;
-	protected Integer telefonoResponsable;
+	protected Integer idResponsable;
 	protected TipoDeMascota tipoDeMascota;
+
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getImagen() {
 		return imagen;
@@ -42,20 +51,12 @@ public abstract class Mascota {
 		this.descripcion = descripcion;
 	}
 
-	public String getNombreResponsable() {
-		return nombreResponsable;
+	public Integer getIdResponsable() {
+		return idResponsable;
 	}
 
-	public void setNombreResponsable(String nombreResponsable) {
-		this.nombreResponsable = nombreResponsable;
-	}
-
-	public Integer getTelefonoResponsable() {
-		return telefonoResponsable;
-	}
-
-	public void setTelefonoResponsable(Integer telefonoResponsable) {
-		this.telefonoResponsable = telefonoResponsable;
+	public void setIdResponsable(Integer idResponsable) {
+		this.idResponsable = idResponsable;
 	}
 
 	public TipoDeMascota getTipoDeMascota() {
@@ -64,6 +65,11 @@ public abstract class Mascota {
 
 	public void setTipoDeMascota(TipoDeMascota tipoDeMascota) {
 		this.tipoDeMascota = tipoDeMascota;
+	}
+
+	@Override
+	public String toString() {
+		return "Mascota " + id + ", nombre=" + nombre + ", tipoDeMascota=" + tipoDeMascota + "]";
 	}
 
 }

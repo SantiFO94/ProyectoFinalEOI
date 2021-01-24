@@ -3,10 +3,10 @@ package edu.eoi.repository;
 public enum Comando {
 	
 	ALTA("Alta mascota"),
-	BUSCAR("Busca mascota"),
-	MODIFICAR("modifica mascota"),
-	ELIMINAR("Elimina mascota"),
-	GENERAR("Genera informes"),
+	BUSCAR("Buscar mascota"),
+	MODIFICAR("modificar mascota"),
+	ELIMINAR("Eliminar mascota"),
+	GENERAR("Generar informes"),
 	HELP("ayuda"),
 	SALIR("Salir");
 	

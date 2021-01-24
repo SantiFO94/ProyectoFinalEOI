@@ -11,8 +11,8 @@ public class MenuInicio {
 		System.out.println("HAPPY PEOIT\n");
 		System.out.println("Elija una opcion:");
 		System.out.println("-Alta mascota");
-		System.out.println("-Busca mascota");
-		System.out.println("-Modifica mascota");
+		System.out.println("-Buscar mascota");
+		System.out.println("-Modificar mascota");
 		System.out.println("-Eliminar mascota");
 		System.out.println("-Generar Informes");
 		System.out.println("-Salir");
