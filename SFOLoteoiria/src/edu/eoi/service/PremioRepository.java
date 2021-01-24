@@ -133,16 +133,16 @@ public class PremioRepository {
 		for(int i = 1 ; i <= 4 ; i++) {
 			switch(i) {
 			case 1:
-				System.out.println("4000000\t\t1250000\t\t500000\t\t200000\t\t60000 60000");
+				System.out.println("4.000.000\t1.250.000\t500.000\t\t200.000\t\t60.000 60.000");
 				break;
 			case 2:
-				System.out.println("\t\t\t\t\t\t200000\t\t60000 60000");
+				System.out.println("\t\t\t\t\t\t200.000\t\t60.000 60.000");
 				break;
 			case 3:
-				System.out.println("\t\t\t\t\t\t\t\t60000 60000");
+				System.out.println("\t\t\t\t\t\t\t\t60.000 60.000");
 				break;
 			case 4:
-				System.out.println("\t\t\t\t\t\t\t\t60000 60000");
+				System.out.println("\t\t\t\t\t\t\t\t60.000 60.000");
 				break;
 			}
 		}
@@ -187,15 +187,32 @@ public class PremioRepository {
 		String numeroPremiado = null;
 		//imprimir numero premiado
 		numeroPremiado = premiosPrincipales.get(i).getNumeroPremiado().toString();
-		
+		addCeros(numeroPremiado);
 		System.out.print(numeroPremiado.concat("\t\t"));
 	}
 	public static void imprimirNumeroPremiado(int i, List<Premio> premiosPrincipales) {
 		String numeroPremiado = null;
 		//imprimir numero premiado
 		numeroPremiado = premiosPrincipales.get(i).getNumeroPremiado().toString();
-		
+		addCeros(numeroPremiado);
 		System.out.print(numeroPremiado.concat(" "));
+	}
+	public static void addCeros(String numeroPremiado) {
+		int length = numeroPremiado.length();
+		switch(length) {
+		case 1:
+			System.out.print("0000");
+			break;
+		case 2:
+			System.out.print("000");
+			break;
+		case 3:
+			System.out.print("00");
+			break;
+		case 4:
+			System.out.print("0");
+			break;
+		}
 	}
 	public static void evaluarNumeroAceptado (Integer numeroAceptado, List<Premio> premiosPrincipales) {
 		boolean ganador = false;
