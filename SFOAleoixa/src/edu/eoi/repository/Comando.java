@@ -7,7 +7,7 @@ public enum Comando {
 	CHISTE("Cuentame un chiste"),
 	CALCULADORA("Calcula"),
 	TRADUCTOR("Traduce"),
-	AYUDA("Help"),
+	AYUDA("Ayuda"),
 	SALIR("Salir");
 	
 	public final String comando;

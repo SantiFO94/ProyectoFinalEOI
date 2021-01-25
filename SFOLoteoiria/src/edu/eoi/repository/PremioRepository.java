@@ -1,4 +1,4 @@
-package edu.eoi.service;
+package edu.eoi.repository;
 
 import java.util.ArrayList;
 import java.util.List;

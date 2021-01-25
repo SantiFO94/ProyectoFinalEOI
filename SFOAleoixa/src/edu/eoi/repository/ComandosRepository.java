@@ -12,42 +12,52 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Repository {
+public class ComandosRepository {
 
 	private static final Scanner sctexto = new Scanner(System.in);
 
-	public static Comando elegirComando() {
+	public static Comando introducirComando() {
 		
 		Comando comando = null;
 		String instruccion = null;
 		try {
-			System.out.println("¿En qué puedo ayudarle?");
+			System.out.println("¿En qué puedo ayudarle? \n"
+					+ "(Si tiene dudas sobre qué puede pedirme escriba AYUDA)");
+			LoguearRepository.loguear("ALEOIXA", "¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)");
+
 			instruccion = sctexto.nextLine();
-			loguear("USUARIO", instruccion);
-			
-			for(Comando comandoTemporal : Comando.values()) {
-				if (instruccion.equalsIgnoreCase(comandoTemporal.toString())) {
-					comando = comandoTemporal;
-				}else {
-					throw new Exception();
+			LoguearRepository.loguear("USUARIO", instruccion);
+			if(instruccion.matches("\\D+")) {
+				for(Comando comandoTemporal : Comando.values()) {
+					if (instruccion.equalsIgnoreCase(comandoTemporal.comando)) {
+						comando = comandoTemporal;
+					}
 				}
+			}else {
+				System.out.println("El comando no puede contener números.\n");
+				LoguearRepository.loguear("ALEOIXA", "El comando no puede contener números.\n");
+				comando = introducirComando();
 			}
+			if(comando.equals(null)) {
+				throw new Exception();
+			}
+			
 		} catch (Exception e) {
-			System.out.println("El comando ".concat(instruccion).concat(" no es válido.\n"));
-			loguear("ALEOIXA", "El comando ".concat(instruccion).concat(" no es válido."));
-			elegirComando();
+			System.out.println("El comando ".concat(instruccion.toString()).concat(" no es válido.\n"));
+			LoguearRepository.loguear("ALEOIXA", "El comando ".concat(instruccion.toString()).concat(" no es válido."));
+			comando = introducirComando();
 		}
 
 		return comando;
 	}
-	
+	//mostrar comandos disponibles
 	public static void help() {
 
 		System.out.println("Puedes pedirme cualquiera de estas cosas:\n");
-		loguear("ALEOIXA", "Puedes pedirme cualquiera de estas cosas:");
+		LoguearRepository.loguear("ALEOIXA", "Puedes pedirme cualquiera de estas cosas:");
 		for (Comando comando : Comando.values()) {
 			System.out.println(comando.comando);
-			loguear("ALEOIXA", comando.comando);
+			LoguearRepository.loguear("ALEOIXA", comando.comando);
 		}
 		System.out.println();
 	}
@@ -56,7 +66,7 @@ public class Repository {
 		LocalDate hoy = LocalDate.now();
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		System.out.println(hoy.format(formato));
-		loguear("ALEOIXA", hoy.format(formato));
+		LoguearRepository.loguear("ALEOIXA", hoy.format(formato));
 		System.out.println();
 	}
 
@@ -64,7 +74,7 @@ public class Repository {
 		LocalTime ahora = LocalTime.now();
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
 		System.out.println(ahora.format(formato));
-		loguear("ALEOIXA", ahora.format(formato));
+		LoguearRepository.loguear("ALEOIXA", ahora.format(formato));
 		System.out.println();
 	}
 
@@ -80,7 +90,7 @@ public class Repository {
 
 		int random = new Random().nextInt(chistes.size());
 		System.out.println(chistes.get(random));
-		loguear("ALEOIXA", chistes.get(random));
+		LoguearRepository.loguear("ALEOIXA", chistes.get(random));
 
 //		try {
 //			FileReader fr = new FileReader("ChistesMal.txt");
@@ -113,38 +123,31 @@ public class Repository {
 	public static void calcular() {
 
 		System.out.println("Introduzca la operación que quiere realizar, "
-				+ "separando con espacios cada elemento (\"número signo número\"):");
-		loguear("ALEOIXA", "Introduzca la operación que quiere realizar, "
-				+ "separando con espacios cada elemento (\"número signo número\"):");
+				+ "separando con espacios cada elemento (número signo número):");
+		LoguearRepository.loguear("ALEOIXA", "Introduzca la operación que quiere realizar, "
+				+ "separando con espacios cada elemento (número signo número):");
 		String operacionIntroducida = sctexto.nextLine();
-		loguear("USUARIO", operacionIntroducida);
+		LoguearRepository.loguear("USUARIO", operacionIntroducida);
 		String operacionProcesada[] = operacionIntroducida.split(" ");
 		String operador = operacionProcesada[1];
 
 		try {
 			if (operador.equals("+")) {
 				System.out.println(Double.parseDouble(operacionProcesada[0]) + Double.parseDouble(operacionProcesada[2]));
-				loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) + Double.parseDouble(operacionProcesada[2])));
+				LoguearRepository.loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) + Double.parseDouble(operacionProcesada[2])));
 			} else if (operador.equals("-")) {
 				System.out.println(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2]));
-				loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2])));
+				LoguearRepository.loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2])));
 			} else if (operador.equals("*")) {
 				System.out.println(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2]));
-				loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2])));
+				LoguearRepository.loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2])));
 			} else if (operador.equals("/")) {
-//				if (Double.parseDouble(operacionProcesada[0]) == 0.0 || Double.parseDouble(operacionProcesada[2]) == 0.0) {
-//					System.out.println("Operación invalida");
-//					loguear("ALEOIXA", "Operación invalida");
-//					
-//				} else {
-					System.out.println(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2]));
-					loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2])));
-//				}
-
+				System.out.println(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2]));
+				LoguearRepository.loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2])));
 			}
 		} catch (ArithmeticException e) {
 			System.out.println("Operación inválida");
-			loguear("ALEOIXA", "Operación invalida");
+			LoguearRepository.loguear("ALEOIXA", "Operación invalida");
 		}
 		System.out.println();
 	}
@@ -163,51 +166,38 @@ public class Repository {
 		DiccionarioEspañolIngles.put("Uva", "Grape");
 		DiccionarioEspañolIngles.put("Mora", "Blackberry");
 
-		Map<String, String> DiccionarioInglesEspañol = new HashMap<String, String>();
-		DiccionarioEspañolIngles.put("Banana", "Plátano");
-		DiccionarioEspañolIngles.put("Apple", "Manzana");
-		DiccionarioEspañolIngles.put("Pear", "Pera");
-		DiccionarioEspañolIngles.put("Watermelon", "Sandía");
-		DiccionarioEspañolIngles.put("Cherry", "Cereza");
-		DiccionarioEspañolIngles.put("Peach", "Melocotón");
-		DiccionarioEspañolIngles.put("Plum", "Ciruela");
-		DiccionarioEspañolIngles.put("Melon", "Melón");
-		DiccionarioEspañolIngles.put("Grape", "Uva");
-		DiccionarioEspañolIngles.put("Blackberry", "Mora");
-
 		System.out.println("¿Qué fruta desea traducir?");
-		loguear("ALEOIXA", "¿Qué fruta desea traducir?");
+		LoguearRepository.loguear("ALEOIXA", "¿Qué fruta desea traducir?");
 		String fruta = sctexto.nextLine();
-		loguear("USUARIO", fruta);
+		LoguearRepository.loguear("USUARIO", fruta);
+		boolean encontrado = false;
 		//español-ingles
+		//buscar palabra
 		for (String palabra : DiccionarioEspañolIngles.keySet()) {
 			if (fruta.equalsIgnoreCase(palabra)) {
 				System.out.println(DiccionarioEspañolIngles.get(palabra));
-				loguear("ALEOIXA", DiccionarioEspañolIngles.get(palabra));
-				break;
+				LoguearRepository.loguear("ALEOIXA", DiccionarioEspañolIngles.get(palabra));
+				encontrado = true;
 			}
 		}
 		//ingles-español
-				for (String palabra : DiccionarioInglesEspañol.keySet()) {
-			if (fruta.equalsIgnoreCase(palabra)) {
-				System.out.println(DiccionarioInglesEspañol.get(palabra));
-				loguear("ALEOIXA", DiccionarioInglesEspañol.get(palabra));
-				break;
+		if(!encontrado) {
+			//preparar diccionario invertido
+			Map<String, String> DiccionarioInglesEspañol = new HashMap<String, String>();
+			for (String palabra : DiccionarioEspañolIngles.keySet()) {
+				DiccionarioInglesEspañol.put(DiccionarioEspañolIngles.get(palabra), palabra);
+			}
+			//buscar palabra
+			for (String palabra : DiccionarioInglesEspañol.keySet()) {
+				if (fruta.equalsIgnoreCase(palabra)) {
+					System.out.println(DiccionarioInglesEspañol.get(palabra));
+					LoguearRepository.loguear("ALEOIXA", DiccionarioInglesEspañol.get(palabra));
+				}
 			}
 		}
+		
 	}
 
-	public static void loguear(String interlocutor, String mensaje) {
-		try {
-			//Generar el objeto que creará y escribirá nuestro documento
-			FileWriter fw = new FileWriter("log_aleoixa_".concat(LocalDate.now().toString()).concat(".txt"), true);
-				
-			fw.write(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")).toString().concat(" - ").concat(interlocutor).concat(": ").concat(mensaje).concat("\n"));
-				
-			fw.close();
-		} catch (IOException e) {
-			System.out.println("Ha habido un problema modificando el archivo");;
-		}
-	}
+	
 
 }
