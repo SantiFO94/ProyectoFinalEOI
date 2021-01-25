@@ -1,0 +1,104 @@
+18:18:29 - USUARIO: ayuda
+18:18:29 - ALEOIXA: El comando ayuda no es válido.
+18:19:40 - USUARIO: help
+18:19:40 - ALEOIXA: El comando help no es válido.
+18:19:56 - USUARIO: ¿Qué día es?
+18:19:56 - ALEOIXA: El comando ¿Qué día es? no es válido.
+18:22:32 - USUARIO: salir
+18:22:32 - ALEOIXA: El comando salir no es válido.
+18:23:29 - ALEOIXA: ¿En qué puedo ayudarle?
+18:23:37 - USUARIO: ¿Qué día es?
+18:23:37 - ALEOIXA: El comando ¿Qué día es? no es válido.
+18:23:37 - ALEOIXA: ¿En qué puedo ayudarle?
+18:23:43 - USUARIO: ayuda
+18:23:43 - ALEOIXA: El comando ayuda no es válido.
+18:23:43 - ALEOIXA: ¿En qué puedo ayudarle?
+18:23:53 - USUARIO: ¿Qué hora es?
+18:23:53 - ALEOIXA: El comando ¿Qué hora es? no es válido.
+18:23:53 - ALEOIXA: ¿En qué puedo ayudarle?
+18:23:57 - USUARIO: dia
+18:23:57 - ALEOIXA: El comando dia no es válido.
+18:23:57 - ALEOIXA: ¿En qué puedo ayudarle?
+18:24:00 - USUARIO: DIA
+18:24:00 - ALEOIXA: El comando DIA no es válido.
+18:24:00 - ALEOIXA: ¿En qué puedo ayudarle?
+18:48:35 - ALEOIXA: ¿En qué puedo ayudarle?
+18:48:40 - USUARIO: ayuda
+18:48:40 - ALEOIXA: El comando ayuda no es válido.
+18:48:40 - ALEOIXA: ¿En qué puedo ayudarle?
+18:48:51 - USUARIO: ¿Qué día es?
+18:48:51 - ALEOIXA: 25/01/2021
+18:48:51 - ALEOIXA: ¿En qué puedo ayudarle?
+18:48:57 - USUARIO: ¿Qué hora es?
+18:48:57 - ALEOIXA: 18:48
+18:48:57 - ALEOIXA: ¿En qué puedo ayudarle?
+18:49:05 - USUARIO: help
+18:49:05 - ALEOIXA: Puedes pedirme cualquiera de estas cosas:
+18:49:05 - ALEOIXA: ¿Qué día es?
+18:49:05 - ALEOIXA: ¿Qué hora es?
+18:49:05 - ALEOIXA: Cuentame un chiste
+18:49:05 - ALEOIXA: Calcula
+18:49:05 - ALEOIXA: Traduce
+18:49:05 - ALEOIXA: Help
+18:49:05 - ALEOIXA: Salir
+18:49:05 - ALEOIXA: ¿En qué puedo ayudarle?
+18:49:13 - USUARIO: Cuentame un chiste
+18:49:13 - ALEOIXA: ¡Apilar los barriles! Y pilar murió aplastada.
+18:49:13 - ALEOIXA: ¿En qué puedo ayudarle?
+18:49:20 - USUARIO: Traduce
+18:49:20 - ALEOIXA: ¿Qué fruta desea traducir?
+18:49:23 - USUARIO: pera
+18:49:23 - ALEOIXA: Pear
+18:49:23 - ALEOIXA: ¿En qué puedo ayudarle?
+18:49:27 - USUARIO: Traduce
+18:49:27 - ALEOIXA: ¿Qué fruta desea traducir?
+18:49:29 - USUARIO: Pear
+18:49:30 - ALEOIXA: Pera
+18:49:30 - ALEOIXA: ¿En qué puedo ayudarle?
+18:49:34 - USUARIO: Calcula
+18:49:34 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento ("número signo número"):
+18:49:54 - USUARIO: 5 * 35
+18:49:54 - ALEOIXA: 175.0
+18:49:54 - ALEOIXA: ¿En qué puedo ayudarle?
+18:50:03 - USUARIO: Calcula
+18:50:04 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento ("número signo número"):
+18:50:14 - USUARIO: 5.5 * 0.7
+18:50:14 - ALEOIXA: 3.8499999999999996
+18:50:14 - ALEOIXA: ¿En qué puedo ayudarle?
+18:50:19 - USUARIO: calcula
+18:50:19 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento ("número signo número"):
+18:50:26 - USUARIO: 4 / 0
+18:50:26 - ALEOIXA: Infinity
+18:50:26 - ALEOIXA: ¿En qué puedo ayudarle?
+18:50:38 - USUARIO: salir
+18:50:38 - ALEOIXA: ¡Hasta pronto!
+19:08:14 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:08:19 - USUARIO: ayuda
+19:08:19 - ALEOIXA: Puedes pedirme cualquiera de estas cosas:
+19:08:19 - ALEOIXA: ¿Qué día es?
+19:08:19 - ALEOIXA: ¿Qué hora es?
+19:08:19 - ALEOIXA: Cuentame un chiste
+19:08:19 - ALEOIXA: Calcula
+19:08:19 - ALEOIXA: Traduce
+19:08:19 - ALEOIXA: Ayuda
+19:08:19 - ALEOIXA: Salir
+19:08:19 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:08:30 - USUARIO: traduce
+19:08:30 - ALEOIXA: ¿Qué fruta desea traducir?
+19:08:34 - USUARIO: Grape
+19:08:34 - ALEOIXA: Uva
+19:08:34 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:08:39 - USUARIO: traduce
+19:08:39 - ALEOIXA: ¿Qué fruta desea traducir?
+19:08:44 - USUARIO: melon
+19:08:44 - ALEOIXA: Melón
+19:08:44 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:08:58 - USUARIO: aef
+19:08:58 - ALEOIXA: El comando aef no es válido.
+19:08:58 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:09:02 - USUARIO: 23
+19:09:02 - ALEOIXA: El comando no puede contener números.
+
+19:09:02 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:09:07 - USUARIO: salir
+19:09:07 - ALEOIXA: ¡Hasta pronto!

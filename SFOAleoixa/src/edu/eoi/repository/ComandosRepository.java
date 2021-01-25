@@ -154,17 +154,17 @@ public class ComandosRepository {
 
 	public static void traducir() {
 
-		Map<String, String> DiccionarioEspañolIngles = new HashMap<String, String>();
-		DiccionarioEspañolIngles.put("Plátano", "Banana");
-		DiccionarioEspañolIngles.put("Manzana", "Apple");
-		DiccionarioEspañolIngles.put("Pera", "Pear");
-		DiccionarioEspañolIngles.put("Sandía", "Watermelon");
-		DiccionarioEspañolIngles.put("Cereza", "Cherry");
-		DiccionarioEspañolIngles.put("Melocotón", "Peach");
-		DiccionarioEspañolIngles.put("Ciruela", "Plum");
-		DiccionarioEspañolIngles.put("Melón", "Melon");
-		DiccionarioEspañolIngles.put("Uva", "Grape");
-		DiccionarioEspañolIngles.put("Mora", "Blackberry");
+		Map<String, String> DiccionarioEspanyolIngles = new HashMap<String, String>();
+		DiccionarioEspanyolIngles.put("Plátano", "Banana");
+		DiccionarioEspanyolIngles.put("Manzana", "Apple");
+		DiccionarioEspanyolIngles.put("Pera", "Pear");
+		DiccionarioEspanyolIngles.put("Sandía", "Watermelon");
+		DiccionarioEspanyolIngles.put("Cereza", "Cherry");
+		DiccionarioEspanyolIngles.put("Melocotón", "Peach");
+		DiccionarioEspanyolIngles.put("Ciruela", "Plum");
+		DiccionarioEspanyolIngles.put("Melón", "Melon");
+		DiccionarioEspanyolIngles.put("Uva", "Grape");
+		DiccionarioEspanyolIngles.put("Mora", "Blackberry");
 
 		System.out.println("¿Qué fruta desea traducir?");
 		LoguearRepository.loguear("ALEOIXA", "¿Qué fruta desea traducir?");
@@ -173,25 +173,25 @@ public class ComandosRepository {
 		boolean encontrado = false;
 		//español-ingles
 		//buscar palabra
-		for (String palabra : DiccionarioEspañolIngles.keySet()) {
+		for (String palabra : DiccionarioEspanyolIngles.keySet()) {
 			if (fruta.equalsIgnoreCase(palabra)) {
-				System.out.println(DiccionarioEspañolIngles.get(palabra));
-				LoguearRepository.loguear("ALEOIXA", DiccionarioEspañolIngles.get(palabra));
+				System.out.println(DiccionarioEspanyolIngles.get(palabra));
+				LoguearRepository.loguear("ALEOIXA", DiccionarioEspanyolIngles.get(palabra));
 				encontrado = true;
 			}
 		}
 		//ingles-español
 		if(!encontrado) {
 			//preparar diccionario invertido
-			Map<String, String> DiccionarioInglesEspañol = new HashMap<String, String>();
-			for (String palabra : DiccionarioEspañolIngles.keySet()) {
-				DiccionarioInglesEspañol.put(DiccionarioEspañolIngles.get(palabra), palabra);
+			Map<String, String> DiccionarioInglesEspanyol = new HashMap<String, String>();
+			for (String palabra : DiccionarioEspanyolIngles.keySet()) {
+				DiccionarioInglesEspanyol.put(DiccionarioEspanyolIngles.get(palabra), palabra);
 			}
 			//buscar palabra
-			for (String palabra : DiccionarioInglesEspañol.keySet()) {
+			for (String palabra : DiccionarioInglesEspanyol.keySet()) {
 				if (fruta.equalsIgnoreCase(palabra)) {
-					System.out.println(DiccionarioInglesEspañol.get(palabra));
-					LoguearRepository.loguear("ALEOIXA", DiccionarioInglesEspañol.get(palabra));
+					System.out.println(DiccionarioInglesEspanyol.get(palabra));
+					LoguearRepository.loguear("ALEOIXA", DiccionarioInglesEspanyol.get(palabra));
 				}
 			}
 		}
