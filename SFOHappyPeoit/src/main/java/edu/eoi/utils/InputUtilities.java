@@ -29,6 +29,7 @@ public class InputUtilities {
 		return responsable;
 	}
 	
+	
 	public static Mascota introducirDatosMascota(Integer idResponsable) {
 
 		System.out.println("CREACIÓN DE MASCOTA");
@@ -71,7 +72,7 @@ public class InputUtilities {
 				throw new Exception();
 			}
 		} catch (Exception e) {
-			System.out.println("Ese id no coincide con ninguno de nuestros responsables.\n");
+			System.out.println("Ese id no se encuentra en nuestra base de datos.\n");
 			idResponsableIntroducido = null;
 		}
 		return idResponsableIntroducido;
