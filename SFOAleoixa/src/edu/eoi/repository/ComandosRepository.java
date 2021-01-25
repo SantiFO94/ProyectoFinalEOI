@@ -1,6 +1,8 @@
 package edu.eoi.repository;
 
-import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -80,42 +82,33 @@ public class ComandosRepository {
 
 	public static void contarChiste() {
 		List<String> chistes = new ArrayList<String>();
-		chistes.add("Van dos y se cae el de en medio.");
-		chistes.add("Va una canica y vuelca.");
-		chistes.add("Va un barco al muelle y rebota.");
-		chistes.add("Tiraros a la mar... Y Mar quedó embarazada.");
-		chistes.add("No es lo mismo dos tazas de té que dos tetazas.");
-		chistes.add("No es lo mismo un metro de encaje negro que que un negro te encaje un metro.");
-		chistes.add("¡Apilar los barriles! Y pilar murió aplastada.");
+		
+		try {
+			FileReader fr = new FileReader("resources/Chistes.txt");
+			BufferedReader br = new BufferedReader(fr);
+			String lectura = null;
+			do{
+				lectura = br.readLine();
+				if (lectura != null) {
+					chistes.add(lectura);
+				}
+				
+			}while (lectura != null);
+			
+			fr.close();
+			br.close();
+			
+			int random = new Random().nextInt(chistes.size());
+			System.out.println(chistes.get(random));
+			LoguearRepository.loguear("ALEOIXA", chistes.get(random));
 
-		int random = new Random().nextInt(chistes.size());
-		System.out.println(chistes.get(random));
-		LoguearRepository.loguear("ALEOIXA", chistes.get(random));
-
-//		try {
-//			FileReader fr = new FileReader("ChistesMal.txt");
-//			BufferedReader br = new BufferedReader(fr);
-//			String lectura = null;
-//			do{
-//				lectura = br.readLine();
-//				if (lectura != null) {
-//					System.out.println(lectura);
-//					chistes.add(lectura);
-//				}
-//				
-//			}while (lectura != null);
-//			
-//			fr.close();
-//			br.close();
-//			
-//			int random = new Random().nextInt(chistes.size());
-//			System.out.println(chistes.get(random));
-//			
-//		}catch(FileNotFoundException e){
-//			System.out.println("No se han encontrado los chistes, quizas son demasiado malos...");
-//		}catch(IOException f) {
-//			System.out.println("Ha ocurrido un error");
-//		}
+		}catch(FileNotFoundException e){
+			System.out.println("No se han encontrado los chistes, quizas son demasiado malos...");
+			LoguearRepository.loguear("ALEOIXA", "No se han encontrado los chistes, quizas son demasiado malos...");
+		}catch(IOException f) {
+			System.out.println("Ha ocurrido un error");
+			LoguearRepository.loguear("ALEOIXA", "Ha ocurrido un error");
+		}
 
 		System.out.println();
 	}
@@ -129,6 +122,7 @@ public class ComandosRepository {
 		String operacionIntroducida = sctexto.nextLine();
 		LoguearRepository.loguear("USUARIO", operacionIntroducida);
 		String operacionProcesada[] = operacionIntroducida.split(" ");
+		
 		String operador = operacionProcesada[1];
 
 		try {
@@ -138,12 +132,15 @@ public class ComandosRepository {
 			} else if (operador.equals("-")) {
 				System.out.println(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2]));
 				LoguearRepository.loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) - Double.parseDouble(operacionProcesada[2])));
-			} else if (operador.equals("*")) {
+			} else if (operador.equals("*") || operador.equals("x")) {
 				System.out.println(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2]));
 				LoguearRepository.loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) * Double.parseDouble(operacionProcesada[2])));
 			} else if (operador.equals("/")) {
 				System.out.println(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2]));
 				LoguearRepository.loguear("ALEOIXA", Double.toString(Double.parseDouble(operacionProcesada[0]) / Double.parseDouble(operacionProcesada[2])));
+			} else {
+				System.out.println("No le entiendo. Pruebe con los símbolos: + , - , * , /");
+				LoguearRepository.loguear("ALEOIXA", "No le entiendo. Pruebe con los símbolos: + , - , * , /");
 			}
 		} catch (ArithmeticException e) {
 			System.out.println("Operación inválida");
@@ -192,8 +189,14 @@ public class ComandosRepository {
 				if (fruta.equalsIgnoreCase(palabra)) {
 					System.out.println(DiccionarioInglesEspanyol.get(palabra));
 					LoguearRepository.loguear("ALEOIXA", DiccionarioInglesEspanyol.get(palabra));
+					encontrado = true;
 				}
 			}
+		}
+		if(!encontrado) {
+			System.out.println("Esa palabra no se encuentra en nuestro diccionario.");
+			LoguearRepository.loguear("ALEOIXA", "Esa palabra no se encuentra en nuestro diccionario.");
+
 		}
 		
 	}

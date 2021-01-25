@@ -102,3 +102,76 @@
 19:09:02 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
 19:09:07 - USUARIO: salir
 19:09:07 - ALEOIXA: ¡Hasta pronto!
+19:52:23 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:52:25 - USUARIO: ayuda
+19:52:25 - ALEOIXA: Puedes pedirme cualquiera de estas cosas:
+19:52:25 - ALEOIXA: ¿Qué día es?
+19:52:25 - ALEOIXA: ¿Qué hora es?
+19:52:25 - ALEOIXA: Cuentame un chiste
+19:52:25 - ALEOIXA: Calcula
+19:52:25 - ALEOIXA: Traduce
+19:52:25 - ALEOIXA: Ayuda
+19:52:25 - ALEOIXA: Salir
+19:52:25 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:52:30 - USUARIO: cuentame un chiste
+19:54:04 - ALEOIXA: Va una canica y vuelca.
+19:54:04 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:56:52 - USUARIO: salir
+19:56:52 - ALEOIXA: ¡Hasta pronto!
+19:57:34 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:58:26 - USUARIO: ayuda
+19:58:27 - ALEOIXA: Puedes pedirme cualquiera de estas cosas:
+19:58:27 - ALEOIXA: ¿Qué día es?
+19:58:27 - ALEOIXA: ¿Qué hora es?
+19:58:28 - ALEOIXA: Cuentame un chiste
+19:58:28 - ALEOIXA: Calcula
+19:58:28 - ALEOIXA: Traduce
+19:58:28 - ALEOIXA: Ayuda
+19:58:28 - ALEOIXA: Salir
+19:58:28 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:58:55 - USUARIO: calcula 
+19:58:55 - ALEOIXA: El comando calcula  no es válido.
+19:58:55 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+19:59:58 - USUARIO: ¿Qué día es?
+19:59:58 - ALEOIXA: 25/01/2021
+19:59:58 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:00:26 - USUARIO: traduce
+20:00:26 - ALEOIXA: ¿Qué fruta desea traducir?
+20:00:37 - USUARIO: piña
+20:00:37 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:00:58 - USUARIO: traduce
+20:00:58 - ALEOIXA: ¿Qué fruta desea traducir?
+20:01:04 - USUARIO: Manzana
+20:01:04 - ALEOIXA: Apple
+20:01:04 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:01:32 - USUARIO: Cuentame un chiste
+20:01:32 - ALEOIXA: Va un barco al muelle y rebota.
+20:01:32 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:01:41 - USUARIO: jaja
+20:01:41 - ALEOIXA: El comando jaja no es válido.
+20:01:41 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:01:54 - USUARIO: ¿Qué hora es?
+20:01:54 - ALEOIXA: 20:01
+20:01:54 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:02:20 - USUARIO: Calcula
+20:02:20 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento (número signo número):
+20:02:42 - USUARIO: 567 x 34 
+20:02:42 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:03:02 - USUARIO: Calcula
+20:03:02 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento (número signo número):
+20:03:07 - USUARIO: 345 * 9
+20:03:07 - ALEOIXA: 3105.0
+20:03:07 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:03:40 - USUARIO: salir
+20:03:40 - ALEOIXA: ¡Hasta pronto!
+20:16:10 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:16:17 - USUARIO: calcula
+20:16:17 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento (número signo número):
+20:16:27 - USUARIO: 34 + 6
+20:16:27 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:17:39 - USUARIO: salir
+20:17:39 - ALEOIXA: ¡Hasta pronto!
+20:17:43 - ALEOIXA: ¿En qué puedo ayudarle? (Si tiene dudas sobre qué puede pedirme escriba AYUDA)
+20:17:45 - USUARIO: calcula
+20:17:45 - ALEOIXA: Introduzca la operación que quiere realizar, separando con espacios cada elemento (número signo número):
+20:17:50 - USUARIO: 34 + 6

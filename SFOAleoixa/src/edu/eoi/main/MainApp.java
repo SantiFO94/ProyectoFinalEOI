@@ -1,4 +1,4 @@
-package AppAleoixa;
+package edu.eoi.main;
 
 import edu.eoi.repository.MenuRepository;
 
