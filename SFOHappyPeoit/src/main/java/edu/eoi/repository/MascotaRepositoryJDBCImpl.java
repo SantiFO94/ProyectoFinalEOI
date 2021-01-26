@@ -13,6 +13,7 @@ import edu.eoi.entity.Mascota;
 import edu.eoi.entity.Perro;
 import edu.eoi.entity.Responsable;
 import edu.eoi.entity.TipoDeMascota;
+import edu.eoi.main.ControlTipoDeMascota;
 import edu.eoi.service.ResponsableService;
 import edu.eoi.utils.DataUtilities;
 
@@ -165,13 +166,12 @@ public class MascotaRepositoryJDBCImpl implements MascotaRepository {
 		Connection con = DataUtilities.openConnection();
 		List<Mascota> mascotas = new ArrayList<Mascota>();
 		try {
-
 			PreparedStatement pst = null;
 			try {
 				pst = con.prepareStatement("SELECT * FROM mascota WHERE tipoDeMascota='".concat(tipoDeMascota.toString()).concat("'"));
 			} catch (NullPointerException e) {
 				pst = con.prepareStatement("SELECT * FROM mascota");
-				System.out.println("Generando informes de todas las mascotas...");
+				System.out.println("Generando informes de todas las mascotas...\n");
 			}
 
 			ResultSet rs = pst.executeQuery();
@@ -181,7 +181,7 @@ public class MascotaRepositoryJDBCImpl implements MascotaRepository {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Ha habido un problema con la base de datos.");
+			System.out.println("Ha habido un problema con la base de datos.\n");
 			e.printStackTrace();
 		}
 
@@ -193,9 +193,9 @@ public class MascotaRepositoryJDBCImpl implements MascotaRepository {
 		Mascota mascota = null;
 		TipoDeMascota tipoDeMascota = null;
 
-		tipoDeMascota = TipoDeMascotaRepository.elegirTipo(rs.getString("tipoDeMascota"));
+		tipoDeMascota = ControlTipoDeMascota.elegirTipo(rs.getString("tipoDeMascota"));
 
-		mascota = TipoDeMascotaRepository.instanciarMascota(tipoDeMascota);
+		mascota = ControlTipoDeMascota.instanciarMascota(tipoDeMascota);
 
 		mascota.setId(rs.getInt("id"));
 		mascota.setImagen(rs.getString("imagen"));
@@ -203,17 +203,8 @@ public class MascotaRepositoryJDBCImpl implements MascotaRepository {
 		mascota.setUbicacion(rs.getString("ubicacion"));
 		mascota.setDescripcion(rs.getString("descripcion"));
 		mascota.setIdResponsable(rs.getInt("idResponsable"));
-
-		switch (mascota.getTipoDeMascota()) {
-		case PERRO:
-			((Perro) mascota).setEdad(rs.getString("edad"));
-			break;
-		case GATO:
-			((Gato) mascota).setEdad(rs.getString("edad"));
-			break;
-		default:
-			break;
-		}
+		mascota.setEdad(rs.getString("edad"));
+		
 		return mascota;
 	}
 

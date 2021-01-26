@@ -9,8 +9,27 @@ public abstract class Mascota {
 	protected String descripcion;
 	protected Integer idResponsable;
 	protected TipoDeMascota tipoDeMascota;
-
+	protected String edad;
 	
+	public Mascota(String imagen, String nombre, String ubicacion, String descripcion,
+			Integer idResponsable, String edad) {
+		super();
+		this.imagen = imagen;
+		this.nombre = nombre;
+		this.ubicacion = ubicacion;
+		this.descripcion = descripcion;
+		this.idResponsable = idResponsable;
+		this.edad = edad;
+	}
+	public Mascota(String imagen, String nombre, String ubicacion, String descripcion,
+			Integer idResponsable) {
+		super();
+		this.imagen = imagen;
+		this.nombre = nombre;
+		this.ubicacion = ubicacion;
+		this.descripcion = descripcion;
+		this.idResponsable = idResponsable;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -67,6 +86,13 @@ public abstract class Mascota {
 		this.tipoDeMascota = tipoDeMascota;
 	}
 
+	public String getEdad() {
+		return edad;
+	}
+
+	public void setEdad(String edad) {
+		this.edad = edad;
+	}
 	@Override
 	public String toString() {
 		return "Mascota " + id + ", nombre=" + nombre + ", tipoDeMascota=" + tipoDeMascota + "]";

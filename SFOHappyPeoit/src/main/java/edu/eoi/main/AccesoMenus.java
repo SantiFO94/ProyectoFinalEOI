@@ -1,16 +1,13 @@
-package edu.eoi.repository;
+package edu.eoi.main;
 
-import edu.eoi.service.InformesService;
 import edu.eoi.ui.MenuBuscar;
 import edu.eoi.ui.MenuCrear;
 import edu.eoi.ui.MenuEliminar;
 import edu.eoi.ui.MenuInicio;
 import edu.eoi.ui.MenuModificar;
 
-public class MenuRepository {
+public class AccesoMenus {
 	
-	static InformesService InformesService = new InformesService();
-
 	public static void elegirMenu(Comando comandoAceptado) {
 		
 		switch(comandoAceptado) {
@@ -31,12 +28,12 @@ public class MenuRepository {
 				break;
 				
 			case GENERAR:
-				InformesService.generarInformes();
+				GeneracionDeInformes.generarInformes();
 				MenuInicio.printMenuInicio();
 				break;
 			
 			case HELP:
-				ComandoRepository.help();
+				GestionComandos.help();
 				break;
 			case SALIR:
 				break;

@@ -1,19 +1,22 @@
 package edu.eoi.ui;
 
-import java.util.Scanner;
-
 import edu.eoi.service.MascotaService;
+import edu.eoi.utils.InputUtilities;
 
 public class MenuEliminar {
 
 	static MascotaService MascotaService = new MascotaService();
-	private static Scanner scnumero = new Scanner(System.in);
 
 	public static void entrarMenuEliminar() {
 
-		System.out.println("Introduzca el id de la mascota que quiere eliminar:");
-		Integer idIntroducido = scnumero.nextInt();
-		MascotaService.delete(MascotaService.read(idIntroducido));
+		System.out.println("ELIMINAR MASCOTA");
+		Integer idIntroducido = InputUtilities.introducirId();
+		try {
+			MascotaService.delete(MascotaService.read(idIntroducido));
+
+		}catch (NullPointerException e) {
+			System.out.println("Mascota no encontrada.\n");
+		}
 
 		MenuInicio.printMenuInicio();
 	}

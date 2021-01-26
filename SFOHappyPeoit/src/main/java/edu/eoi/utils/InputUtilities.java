@@ -1,12 +1,14 @@
 package edu.eoi.utils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import edu.eoi.controller.ComprobacionID;
 import edu.eoi.entity.Gato;
 import edu.eoi.entity.Mascota;
 import edu.eoi.entity.Perro;
 import edu.eoi.entity.Responsable;
-import edu.eoi.repository.TipoDeMascotaRepository;
+import edu.eoi.main.ControlTipoDeMascota;
 import edu.eoi.service.ResponsableService;
 
 public class InputUtilities {
@@ -16,27 +18,48 @@ public class InputUtilities {
 	static ResponsableService ResponsableService = new ResponsableService();
 
 	public static Responsable introducirDatosResponsable() {
-
 		Responsable responsable = new Responsable(null, null, null);
+		
 		System.out.println("CREACIÓN DE RESPONSABLE");
-		System.out.println("Introduzca el numero de identificacion:");
-		responsable.setId(scnumero.nextInt());
+		
+		Integer idResponsableAceptado = aceptarId();
+		
+		responsable.setId(idResponsableAceptado);
 		System.out.println("Introduzca el nombre:");
 		responsable.setNombre(sctexto.nextLine());
 		System.out.println("Introduzca el numero de telefono:");
 		responsable.setTelefono(scnumero.nextInt());
-
+		
 		return responsable;
 	}
 	
-	
+	public static Integer introducirId() {
+		Integer id = 0;
+		try {
+			System.out.println("Introduzca el numero de identificacion:");
+			id = scnumero.nextInt();
+		}catch (InputMismatchException e) {
+			System.out.println("El id tiene que ser un número.\n");
+		}
+		
+		return id;
+	}
+	public static Integer aceptarId() {
+		Integer idResponsableAceptado = null;
+		if(ComprobacionID.comprobarIDResponsableExiste(introducirId())) {
+			System.out.println("ID ya existente, pruebe otro ID.\n");
+			idResponsableAceptado = aceptarId();
+		}
+		return idResponsableAceptado;
+	}
+
 	public static Mascota introducirDatosMascota(Integer idResponsable) {
 
 		System.out.println("CREACIÓN DE MASCOTA");
 		System.out.println("Introduzca el tipo de mascota:");
 		String tipoIntroducido = sctexto.nextLine();
-		Mascota mascota = TipoDeMascotaRepository.instanciarMascota(
-						TipoDeMascotaRepository.elegirTipo(tipoIntroducido));
+		Mascota mascota = ControlTipoDeMascota.instanciarMascota(
+						ControlTipoDeMascota.elegirTipo(tipoIntroducido));
 		System.out.println("Introduzca el enlace a la imagen:");
 		mascota.setImagen(sctexto.nextLine());
 		System.out.println("Introduzca el nombre:");
@@ -60,21 +83,5 @@ public class InputUtilities {
 			}
 
 		return mascota;
-	}
-	//esto iria a controller?
-	public static Integer comprobarIDResponsable() {
-		Integer idResponsableIntroducido = null;
-		try {
-			System.out.println("Introduzca el id del responsable:");
-			idResponsableIntroducido = scnumero.nextInt();
-
-			if (ResponsableService.read(idResponsableIntroducido).getId().equals(null)) {
-				throw new Exception();
-			}
-		} catch (Exception e) {
-			System.out.println("Ese id no se encuentra en nuestra base de datos.\n");
-			idResponsableIntroducido = null;
-		}
-		return idResponsableIntroducido;
 	}
 }

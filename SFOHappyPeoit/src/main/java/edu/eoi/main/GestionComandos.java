@@ -1,10 +1,10 @@
-package edu.eoi.repository;
+package edu.eoi.main;
 
 import java.util.Scanner;
 
 import edu.eoi.ui.MenuInicio;
 
-public class ComandoRepository {
+public class GestionComandos {
 	
 	private static Scanner sctexto= new Scanner(System.in);
 

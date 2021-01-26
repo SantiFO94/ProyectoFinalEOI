@@ -1,4 +1,4 @@
-package edu.eoi.repository;
+package edu.eoi.main;
 
 import edu.eoi.entity.Gato;
 import edu.eoi.entity.Mascota;
@@ -6,7 +6,7 @@ import edu.eoi.entity.Otro;
 import edu.eoi.entity.Perro;
 import edu.eoi.entity.TipoDeMascota;
 
-public class TipoDeMascotaRepository {
+public class ControlTipoDeMascota {
 
 	public static TipoDeMascota elegirTipo(String tipoIntroducido) {
 

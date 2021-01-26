@@ -1,8 +1,8 @@
 package edu.eoi.ui;
 
-import edu.eoi.repository.Comando;
-import edu.eoi.repository.ComandoRepository;
-import edu.eoi.repository.MenuRepository;
+import edu.eoi.main.AccesoMenus;
+import edu.eoi.main.Comando;
+import edu.eoi.main.GestionComandos;
 
 public class MenuInicio {
 
@@ -17,9 +17,9 @@ public class MenuInicio {
 		System.out.println("-Generar Informes");
 		System.out.println("-Salir");
 		
-		Comando comandoAceptado = ComandoRepository.introducirComando();
+		Comando comandoAceptado = GestionComandos.introducirComando();
 		
-		MenuRepository.elegirMenu(comandoAceptado);
+		AccesoMenus.elegirMenu(comandoAceptado);
 		
 	}
 	
