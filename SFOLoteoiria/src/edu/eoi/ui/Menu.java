@@ -60,18 +60,14 @@ public class Menu {
 		String numeroIntroducido = sctexto.nextLine();
 		Integer numeroAceptado = null;
 		System.out.println("COMPROBAR NÚMERO:".concat(numeroIntroducido));
-		try {
+
 			numeroAceptado = Integer.parseInt(numeroIntroducido);
 			if (numeroAceptado < 0 || numeroAceptado > 99999) {
 
-				@SuppressWarnings("unused")
-				int provocarException = 1 / 0;
+				System.out.println("El numero introducido no es correcto, introduzca un número entre 0 y 99999.");
+				numeroAceptado = introducirNumero();
 			}
 
-		} catch (Exception e) {
-			System.out.println("El numero introducido no es correcto, introduzca un número entre 0 y 99999.");
-			introducirNumero();
-		}
 
 		return numeroAceptado;
 	}
