@@ -6,24 +6,45 @@ import java.util.Scanner;
 import edu.eoi.pojo.Alumno;
 import edu.eoi.pojo.Persona;
 
-public class AlumnoRepository implements CRUDable {
+public class AlumnoRepository {
 
 	private static final Scanner sctexto = new Scanner(System.in);
 	
-	public void crear(List<Persona> personas) {
+	public void guardar(List<Alumno> alumnos, List<Persona> personas) {
+		boolean repetir = true;
+
+		String dni;
+		String usuario;
 		
-		Persona persona = PersonaRepository.introducirDatos(personas, false, null, null);
-		//repo general
+		System.out.println("Introduzca el nombre:");
+		String nombre = sctexto.nextLine();
+		System.out.println("Introduzca los apellidos:");
+		String apellidos = sctexto.nextLine();
+		System.out.println("Introduzca el correo electrónico:");
+		String correoElectronico = sctexto.nextLine();
+		System.out.println("Introduzca la contraseña:");
+		String password = sctexto.nextLine();
 		System.out.println("Introduzca la facultad:");
 		String facultad = sctexto.nextLine();
 		
-		Alumno alumno=new Alumno(persona.getNombre(), persona.getApellidos(), persona.getDni(),
-				persona.getCorreoElectronico(), persona.getUsuario(), persona.getPassword(), facultad);
-		personas.add(alumno);
+		do{
+			
+			System.out.println("Introduzca el dni:");
+			dni = sctexto.nextLine();
+			System.out.println("Introduzca el nombre de usuario (no podrá modificarlo):");
+			usuario = sctexto.nextLine();
+			repetir = PersonaRepository.comprobarExistencia(personas, dni, usuario);
+			
+		}while (repetir);
+		
+		Alumno alumno = new Alumno(nombre, apellidos, dni, correoElectronico, usuario, password, facultad);
+
+		alumnos.add(alumno);
+		personas.add((Persona)alumno);
 
 	}
-	//general
-	public int buscar(List<Persona> alumnos, String dni, String usuario) {
+	
+	public int buscar(List<Alumno> alumnos, String dni, String usuario) {
 
 		int indice = -1;
 		
@@ -35,37 +56,61 @@ public class AlumnoRepository implements CRUDable {
 			}
 		}
 		return indice;
-
 	}
 
-	public void modificar(List<Persona> alumnos, String dni, String usuario) {
-		int indice = buscar(alumnos, dni, usuario);
-		
-		System.out.println("Introduzca los nuevos datos:");
-		
-		Persona persona =  PersonaRepository.introducirDatos(alumnos, true, alumnos.get(indice).getDni(), alumnos.get(indice).getUsuario());
-		System.out.println("Introduzca la facultad:");
-		String facultad = sctexto.nextLine();
-		Alumno alumno=new Alumno(persona.getNombre(), persona.getApellidos(), persona.getDni(),
-				persona.getCorreoElectronico(), persona.getUsuario(), persona.getPassword(), facultad);
-		
-		alumnos.set(indice, alumno);
-		
-	}
-	//general
-	public void borrar(List<Persona> alumnos, String dni, String usuario) {
-		
-		int indice = buscar(alumnos, dni, usuario);
-		
-		if(indice >= 0) {
-			alumnos.remove(indice);
+	public void modificar(List<Alumno> alumnos, List<Persona> personas, int indicePropio) {
+		try {
+
+			System.out.println("Introduzca los nuevos datos");
+			
+			System.out.println("Introduzca el nombre:");
+			String nombre = sctexto.nextLine();
+			System.out.println("Introduzca los apellidos:");
+			String apellidos = sctexto.nextLine();
+			System.out.println("Introduzca el correo electrónico:");
+			String correoElectronico = sctexto.nextLine();
+			System.out.println("Introduzca la contraseña:");
+			String password = sctexto.nextLine();
+			System.out.println("Introduzca la facultad:");
+			String facultad = sctexto.nextLine();
+			
+			Alumno alumno=new Alumno(nombre, apellidos, alumnos.get(indicePropio).getDni(),
+					correoElectronico,  alumnos.get(indicePropio).getUsuario(), password, facultad);
+		//reemplazar los antiguos datos por los nuevos
+			alumnos.set(indicePropio, alumno);
+			int indicePersonas = PersonaRepository.buscar(personas, alumno.getDni(), null);
+
+			personas.set(indicePersonas, (Persona)alumno);
+
+		}catch (NullPointerException e) {
+			System.out.println("No se ha encontrado el alumno.");
 		}
-				
-	}
-	//general
-	public void mostrar(List<Persona> personas, String dni, String usuario, String clase) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	public void borrar(List<Alumno> alumnos, List<Persona> personas, String dni, String usuario) {
+		try {
+			int indice = buscar(alumnos, dni, usuario);
+			
+			if(indice >= 0) {
+				alumnos.remove(indice);
+			}
+			PersonaRepository.borrar(personas, dni, usuario);
+		}catch (NullPointerException e) {
+			System.out.println("No se ha encontrado el alumno.");
+		}
+	}
+
+	public void mostrar(List<Alumno> alumnos, String dni, String usuario) {
+		try {
+			int indice = buscar(alumnos, dni, usuario);
+			
+			System.out.println("Alumno: " + alumnos.get(indice).getNombre() + " " + alumnos.get(indice).getApellidos() + " ");
+			System.out.println("DNI: "+ alumnos.get(indice).getDni() + ". Facultad: " + ((Alumno)alumnos.get(indice)).getFacultad());
+			System.out.println("Correo: "+ alumnos.get(indice).getCorreoElectronico() + ". Usuario: " + alumnos.get(indice).getUsuario());		
+		}catch(IndexOutOfBoundsException e) {
+			
+		}
+	}
+	
 }

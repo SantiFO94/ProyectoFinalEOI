@@ -12,20 +12,22 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import edu.eoi.pojo.Persona;
+import edu.eoi.pojo.Alumno;
+import edu.eoi.pojo.PAS;
+import edu.eoi.pojo.Profesor;
 
 public class JSONRepository {
 
-	
-	public static void escribirArchivo(List<Persona> personas, String clase) {
+	//guardar información en un archivo JSON
+	public static void escribirArchivoAlumnos(List<Alumno> alumnos) {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson("");
-		if(personas != null) {
-			json = gson.toJson(personas);
+		if (alumnos != null) {
+			json = gson.toJson(alumnos);
 		}
 
 		try {
-			FileWriter fw = new FileWriter(clase.concat(".JSON"), false);
+			FileWriter fw = new FileWriter("Alumnos.JSON", false);
 			fw.write(json);
 			fw.flush();
 			fw.close();
@@ -35,33 +37,127 @@ public class JSONRepository {
 		}
 	}
 	
-	public static List<Persona> leerArchivo(String clase) {
-		List<Persona> listaPersonas = new ArrayList<Persona>();
+	public static void escribirArchivoProfesores(List<Profesor> profesores) {
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson("");
+		if (profesores != null) {
+			json = gson.toJson(profesores);
+		}
+
+		try {
+			FileWriter fw = new FileWriter("Profesores.JSON", false);
+			fw.write(json);
+			fw.flush();
+			fw.close();
+			System.out.println("Se ha escrito el archivo correctamente");
+		} catch (IOException e) {
+			System.out.println("No se pudo abrir el archivo.");
+		}
+	}
+	
+	public static void escribirArchivoPas(List<PAS> listaPas) {
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson("");
+		if (listaPas != null) {
+			json = gson.toJson(listaPas);
+		}
+
+		try {
+			FileWriter fw = new FileWriter("PAS.JSON", false);
+			fw.write(json);
+			fw.flush();
+			fw.close();
+			System.out.println("Se ha escrito el archivo correctamente");
+		} catch (IOException e) {
+			System.out.println("No se pudo abrir el archivo.");
+		}
+	}
+//recuperar la informacion de un archivo JSON a una Lista
+	public static List<Alumno> leerArchivoAlumnos(String clase) {
+		List<Alumno> listaPersonas = new ArrayList<Alumno>();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = "";
 		String line = null;
 		try {
 			FileReader fr = new FileReader(clase.concat(".JSON"));
 			BufferedReader br = new BufferedReader(fr);
-			do { 
+			do {
 				line = br.readLine();
-				if(line != null) {
-					json = json+line+"\n";
+				if (line != null) {
+					json = json + line + "\n";
 				}
-			} while(line != null);
+			} while (line != null);
 			fr.close();
 			br.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("No se encuentra el archivo especificado.");
-			escribirArchivo(null, clase);
-			leerArchivo(clase);
+			escribirArchivoAlumnos(null);
+			listaPersonas = leerArchivoAlumnos(clase);
 		} catch (IOException e) {
 			System.out.println("No se pudo abrir el archivo.");
 		}
-		
-		listaPersonas = gson.fromJson(json, new TypeToken<List<Persona>>(){}.getType());
+
+		listaPersonas = gson.fromJson(json, new TypeToken<List<Alumno>>() {
+		}.getType());
 
 		return listaPersonas;
+	}
+	public static List<Profesor> leerArchivoProfesores(String clase) {
+		List<Profesor> listaPersonas = new ArrayList<Profesor>();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = "";
+		String line = null;
+		try {
+			FileReader fr = new FileReader(clase.concat(".JSON"));
+			BufferedReader br = new BufferedReader(fr);
+			do {
+				line = br.readLine();
+				if (line != null) {
+					json = json + line + "\n";
+				}
+			} while (line != null);
+			fr.close();
+			br.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("No se encuentra el archivo especificado.");
+			escribirArchivoProfesores(null);
+			listaPersonas = leerArchivoProfesores(clase);
+		} catch (IOException e) {
+			System.out.println("No se pudo abrir el archivo.");
+		}
+
+		listaPersonas = gson.fromJson(json, new TypeToken<List<Profesor>>() {}.getType());
+
+		return listaPersonas;
+	}
+	public static List<PAS> leerArchivoPas(String clase) {
+		List<PAS> listaPas = new ArrayList<PAS>();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = "";
+		String line = null;
+		try {
+			FileReader fr = new FileReader(clase.concat(".JSON"));
+			BufferedReader br = new BufferedReader(fr);
+			do {
+				line = br.readLine();
+				if (line != null) {
+					json = json + line + "\n";
+				}
+			} while (line != null);
+			fr.close();
+			br.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("No se encuentra el archivo especificado.");
+			escribirArchivoPas(null);
+			listaPas = leerArchivoPas(clase);
+		} catch (IOException e) {
+			System.out.println("No se pudo abrir el archivo.");
+		}
+
+		listaPas = gson.fromJson(json, new TypeToken<List<PAS>>() {
+		}.getType());
+
+		return listaPas;
 	}
 
 }

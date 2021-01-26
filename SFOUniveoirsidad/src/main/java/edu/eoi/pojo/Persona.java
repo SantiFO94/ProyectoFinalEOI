@@ -60,6 +60,11 @@ public class Persona {
 	public String getUsuario() {
 		return usuario;
 	}
+
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", dni=" + dni + ", usuario=" + usuario + "]";
+	}
 	
 	
 

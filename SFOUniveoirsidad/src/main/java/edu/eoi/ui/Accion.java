@@ -1,4 +1,4 @@
-package edu.eoi.app;
+package edu.eoi.ui;
 
 public enum Accion {
 

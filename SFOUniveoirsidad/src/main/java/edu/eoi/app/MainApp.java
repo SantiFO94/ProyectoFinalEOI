@@ -2,104 +2,136 @@ package edu.eoi.app;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+import edu.eoi.pojo.Alumno;
+import edu.eoi.pojo.PAS;
 import edu.eoi.pojo.Persona;
+import edu.eoi.pojo.Profesor;
 import edu.eoi.repository.AlumnoRepository;
 import edu.eoi.repository.JSONRepository;
 import edu.eoi.repository.PASRepository;
-import edu.eoi.repository.PersonaRepository;
 import edu.eoi.repository.ProfesorRepository;
+import edu.eoi.ui.Accion;
+import edu.eoi.ui.MenuCrear;
+import edu.eoi.ui.MenuIdentificador;
+import edu.eoi.ui.MenuInicio;
+import edu.eoi.ui.MenuTipoBusqueda;
+import edu.eoi.ui.TipoBusqueda;
+import edu.eoi.ui.TipoUsuario;
 
 public class MainApp {
 
 	public static void main(String[] args) {
 
-		Scanner sctexto = new Scanner(System.in);
 		AlumnoRepository alumnoRepo = new AlumnoRepository();
 		ProfesorRepository profesorRepo = new ProfesorRepository();
 		PASRepository pasRepo = new PASRepository();
+				
+		List<Alumno> alumnos = JSONRepository.leerArchivoAlumnos("Alumnos");
 		
-		PersonaRepository repositorioPersona = new PersonaRepository();
+		List<Profesor> profesores = JSONRepository.leerArchivoProfesores("Profesores");
 		
-		List<Persona> alumnos = new ArrayList<Persona>();
-		alumnos = JSONRepository.leerArchivo("Alumnos");
+		List<PAS> listaPas = JSONRepository.leerArchivoPas("PAS");
 		
-		List<Persona> profesores = new ArrayList<Persona>();
-		profesores = JSONRepository.leerArchivo("Profesores");
+		List<Persona> personas = new ArrayList<Persona>();
+		personas.addAll(listaPas);
+		personas.addAll(profesores);
+		personas.addAll(alumnos);
 		
-		List<Persona> listaPas = new ArrayList<Persona>();
-		listaPas = JSONRepository.leerArchivo("PAS");
-
 		Accion accion = null;
-		TipoUsuario tipoUsuario = null;
 		TipoBusqueda tipoBusqueda = null;
+		
 		do {
-			accion = MenuInicio.menuInicio(sctexto);
+			accion = MenuInicio.menuInicio();
 			switch(accion) {
 				case CREAR:
-					tipoUsuario = MenuCrear.menuCrear(sctexto);
+					TipoUsuario tipoUsuario = MenuCrear.menuCrear();
 					switch(tipoUsuario) {
 						case ALUMNO:
-							alumnoRepo.crear(alumnos);
+							alumnoRepo.guardar(alumnos, personas);
 							break;
 						case PROFESOR:
-							profesorRepo.crear(profesores);
+							profesorRepo.guardar(profesores, personas);
 							break;
 						case PAS:
-							pasRepo.crear(listaPas);;
+							pasRepo.guardar(listaPas, personas);
 							break;
 					}
 					break;
 				case CONSULTAR:
-					tipoBusqueda = MenuTipoBusqueda.menuTipoBusqueda(sctexto);
+					tipoBusqueda = MenuTipoBusqueda.menuTipoBusqueda();
 					switch(tipoBusqueda) {
 					case DNI:
-						String dni = MenuIdentificador.menuIdentificador(sctexto, "dni");
-						repositorioPersona.mostrar(alumnos, dni, null, "Alumnos");
-						repositorioPersona.mostrar(profesores, dni, null, "Profesores");
-						repositorioPersona.mostrar(listaPas, dni, null, "pas");
+						String dni = MenuIdentificador.menuIdentificador("dni");
+						alumnoRepo.mostrar(alumnos, dni, null);
+						pasRepo.mostrar(listaPas, dni, null);
+						profesorRepo.mostrar(profesores, dni, null);
 						break;
 					case USUARIO:
-						String usuario = MenuIdentificador.menuIdentificador(sctexto, "usuario");
-						repositorioPersona.mostrar(alumnos, null, usuario, "Alumnos");
-						repositorioPersona.mostrar(profesores, null, usuario, "Profesores");
-						repositorioPersona.mostrar(listaPas, null, usuario, "pas");
+						String usuario = MenuIdentificador.menuIdentificador("usuario");
+						alumnoRepo.mostrar(alumnos, null, usuario);
+						pasRepo.mostrar(listaPas, null, usuario);
+						profesorRepo.mostrar(profesores, null, usuario);
 						break;
 					}
 					break;
 				case MODIFICAR:
-					tipoBusqueda = MenuTipoBusqueda.menuTipoBusqueda(sctexto);
+					tipoBusqueda = MenuTipoBusqueda.menuTipoBusqueda();
+					int indice;
 					switch(tipoBusqueda) {
 					case DNI:
-						String dni = MenuIdentificador.menuIdentificador(sctexto, "dni");;
-						alumnoRepo.modificar(alumnos, dni, null);
-						pasRepo.modificar(listaPas, dni, null);
-						profesorRepo.modificar(profesores, dni, null);
+						String dni = MenuIdentificador.menuIdentificador("dni");;
+						indice = alumnoRepo.buscar(alumnos, dni, null);
+						if(indice >= 0) {
+							alumnoRepo.modificar(alumnos, personas, indice);
+						}else {
+							indice = pasRepo.buscar(listaPas, dni, null);
+							if(indice >= 0) {
+								pasRepo.modificar(listaPas, personas, indice);
+							}else {
+								profesorRepo.buscar(profesores, dni, null);
+								if(indice >= 0) {
+									profesorRepo.modificar(profesores, personas, indice);
+
+								}
+							}
+						}
 						break;
 					case USUARIO:
-						String usuario = MenuIdentificador.menuIdentificador(sctexto, "usuario");
-						alumnoRepo.modificar(alumnos, null, usuario);
-						pasRepo.modificar(listaPas, null, usuario);
-						profesorRepo.modificar(profesores, null, usuario);
+						String usuario = MenuIdentificador.menuIdentificador("usuario");
+						indice = alumnoRepo.buscar(alumnos, null, usuario);
+						if(indice >= 0) {
+							alumnoRepo.modificar(alumnos, personas, indice);
+						}else {
+							indice = pasRepo.buscar(listaPas, null, usuario);
+							if(indice >= 0) {
+								pasRepo.modificar(listaPas, personas, indice);
+							}else {
+								profesorRepo.buscar(profesores, null, usuario);
+								if(indice >= 0) {
+									profesorRepo.modificar(profesores, personas, indice);
+
+								}
+							}
+						}
 						break;
 					}
 					break;
 					
 				case ELIMINAR:
-					tipoBusqueda = MenuTipoBusqueda.menuTipoBusqueda(sctexto);
+					tipoBusqueda = MenuTipoBusqueda.menuTipoBusqueda();
 					switch(tipoBusqueda) {
 					case DNI:
-						String dni = MenuIdentificador.menuIdentificador(sctexto, "dni");
-						repositorioPersona.borrar(alumnos, dni, null);
-						repositorioPersona.borrar(profesores, dni, null);
-						repositorioPersona.borrar(listaPas, dni, null);
+						String dni = MenuIdentificador.menuIdentificador("dni");
+						alumnoRepo.borrar(alumnos, personas, dni, null);
+						profesorRepo.borrar(profesores, personas, dni, null);
+						pasRepo.borrar(listaPas, personas, dni, null);
 						break;
 					case USUARIO:
-						String usuario = MenuIdentificador.menuIdentificador(sctexto, "usuario");
-						repositorioPersona.borrar(alumnos, null, usuario);
-						repositorioPersona.borrar(profesores, null, usuario);
-						repositorioPersona.borrar(listaPas, null, usuario);
+						String usuario = MenuIdentificador.menuIdentificador("usuario");
+						alumnoRepo.borrar(alumnos, personas, null, usuario);
+						profesorRepo.borrar(profesores, personas, null, usuario);
+						pasRepo.borrar(listaPas, personas, null, usuario);
 						break;
 					}
 					break;
@@ -110,11 +142,10 @@ public class MainApp {
 			}
 		}while(accion != Accion.SALIR);
 		
-		JSONRepository.escribirArchivo(alumnos, "Alumnos");
-		JSONRepository.escribirArchivo(profesores, "Profesores");
-		JSONRepository.escribirArchivo(listaPas, "PAS");
-		sctexto.close();
-
+		JSONRepository.escribirArchivoAlumnos(alumnos);
+		JSONRepository.escribirArchivoProfesores(profesores);
+		JSONRepository.escribirArchivoPas(listaPas);
+//
 	}
 
 }

@@ -1,11 +1,18 @@
 [
   {
-    "despacho": "despacho1",
     "nombre": "Edu",
     "apellidos": "Rod",
     "dni": "34",
     "correoElectronico": "erod",
     "usuario": "edua",
+    "password": "1234"
+  },
+  {
+    "nombre": "pruebaprofe",
+    "apellidos": "ape",
+    "dni": "1234p",
+    "correoElectronico": "profeprueba",
+    "usuario": "profeprueba",
     "password": "1234"
   }
 ]

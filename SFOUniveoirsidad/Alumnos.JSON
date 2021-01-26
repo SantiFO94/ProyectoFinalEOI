@@ -1,11 +1,18 @@
 [
   {
-    "facultad": "bio",
     "nombre": "Santi",
     "apellidos": "fer",
     "dni": "48",
     "correoElectronico": "sfero",
     "usuario": "yago",
+    "password": "1234"
+  },
+  {
+    "nombre": "pruebaalumno",
+    "apellidos": "ape",
+    "dni": "1234a",
+    "correoElectronico": "pruebal",
+    "usuario": "pruebal",
     "password": "1234"
   }
 ]

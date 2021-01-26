@@ -1,11 +1,18 @@
 [
   {
-    "unidad": "ADMINISTRACION",
     "nombre": "Laura",
     "apellidos": "Gim",
     "dni": "67",
     "correoElectronico": "lgim",
     "usuario": "lau",
+    "password": "1234"
+  },
+  {
+    "nombre": "prueabpas",
+    "apellidos": "ape",
+    "dni": "1234pas",
+    "correoElectronico": "pruebapa",
+    "usuario": "pruebapa",
     "password": "1234"
   }
 ]
