@@ -1,15 +1,19 @@
-package edu.eoi.repository;
+package edu.eoi.main;
 
-import edu.eoi.utils.InputMelodiaUtilities;
+import edu.eoi.utils.InputMelodia;
 
-public class MusicaRepository {
+public class GeneracionDeMusica {
 
-	public String traducirSecuencia(String secuenciaIntroducida) {
-
+	public static String traducirSecuencia(String secuenciaIntroducida) {
 		String secuenciaMusical = null;
-		String[] secuenciaIntroducidaSeparada = secuenciaIntroducida.toLowerCase().split(" ");
+		String[] secuenciaIntroducidaSeparada = secuenciaIntroducida.toLowerCase().split("");
 		for (int i = 0; i < secuenciaIntroducidaSeparada.length; i++) {
-			secuenciaIntroducidaSeparada[i] = "$".concat(secuenciaIntroducidaSeparada[i]);
+			if(secuenciaIntroducidaSeparada[i].matches("\\D+") && secuenciaIntroducidaSeparada[i].matches("\\w+")) {
+				secuenciaIntroducidaSeparada[i] = "$".concat(secuenciaIntroducidaSeparada[i]);
+			}else {
+				secuenciaIntroducidaSeparada[i] = "";
+			}
+			
 		}
 		secuenciaIntroducida = String.join(" ", secuenciaIntroducidaSeparada);
 
@@ -18,11 +22,11 @@ public class MusicaRepository {
 		}
 		//revisar si este $ es necesario
 		secuenciaMusical = secuenciaIntroducida.replace("$", "").concat(" ");
-		secuenciaMusical = InputMelodiaUtilities.introducirInstrumento().concat(secuenciaMusical);
+		secuenciaMusical = InputMelodia.introducirInstrumento().concat(secuenciaMusical);
 		return secuenciaMusical;
 	}
 
-	public String elegirInstrumento(String instrumentoIntroducido) {
+	public static String elegirInstrumento(String instrumentoIntroducido) {
 		String instrumentoElegido = null;
 		for (Instrumento instrumento : Instrumento.values()) {
 			if (instrumentoIntroducido.equalsIgnoreCase(instrumento.toString())) {

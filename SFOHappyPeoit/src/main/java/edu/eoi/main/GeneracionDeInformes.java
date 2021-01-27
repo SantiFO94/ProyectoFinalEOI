@@ -12,6 +12,7 @@ import edu.eoi.entity.Responsable;
 import edu.eoi.entity.TipoDeMascota;
 import edu.eoi.service.MascotaService;
 import edu.eoi.service.ResponsableService;
+import edu.eoi.ui.MenuInicio;
 
 public class GeneracionDeInformes {
 
@@ -31,7 +32,7 @@ public class GeneracionDeInformes {
 		}
 		mascotas = MascotaService.recuperarMascotas(null);
 		escribirDocumentoHTML(null, mascotas, responsables);
-		
+		MenuInicio.printMenuInicio();
 	}
 	
 	private static void escribirDocumentoHTML(TipoDeMascota tipoDeMascotaTemporal, List<Mascota> mascotas, List<Responsable> responsables) {

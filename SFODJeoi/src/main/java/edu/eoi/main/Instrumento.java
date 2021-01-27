@@ -1,4 +1,4 @@
-package edu.eoi.repository;
+package edu.eoi.main;
 
 public enum Instrumento {
 

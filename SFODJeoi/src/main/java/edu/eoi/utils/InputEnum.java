@@ -2,10 +2,10 @@ package edu.eoi.utils;
 
 import java.util.Scanner;
 
-import edu.eoi.repository.Comando;
-import edu.eoi.repository.Guia;
+import edu.eoi.main.Comando;
+import edu.eoi.main.Guia;
 
-public class InputUtilities {
+public class InputEnum {
 	
 	private static Scanner sctexto = new Scanner(System.in);
 	
