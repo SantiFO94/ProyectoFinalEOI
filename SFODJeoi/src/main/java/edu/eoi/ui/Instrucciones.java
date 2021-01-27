@@ -1,8 +1,8 @@
 package edu.eoi.ui;
 
-import edu.eoi.repository.Comando;
-import edu.eoi.repository.Instrumento;
-import edu.eoi.repository.MenuRepository;
+import edu.eoi.enums.Comando;
+import edu.eoi.enums.Instrumento;
+import edu.eoi.main.GestionMenu;
 
 public class Instrucciones {
 
@@ -11,17 +11,18 @@ public class Instrucciones {
 						+ "-Instrucciones \n"
 						+ "-Comandos \n"
 						+ "-Teclas \n"
+						+ "-Instrumentos"
 						+ "-Todo \n");
 		
-		MenuRepository.elegirGuia();
+		GestionMenu.elegirGuia();
 	}
 	
 	public static void mostrarInstrucciones() {
 		System.out.println("Para usar esta app primero tiene que elegir qué quiere hacer con sus melodias.\n"
 						+ "Para ello dispone de varios comandos que puede ver eligiendo la opción COMANDOS en el menú AYUDA. \n"
-						+ "Puede: crear melodías, ver una lista de melodías y modificar o eliminar melodías existentes. \n"
+						+ "Puede: crear melodías, reproducirlas, modificarlas, eliminarlas o ver la lista de melodías disponibles. \n"
 						+ "Para crear melodías solo tiene que seleccionar la opcion CREAR MELODÍA en el menu de inicio. \n"
-						+ "Luego se le pedirá que introduzca una secuencia de letras con su teclado, separadas por espacios. \n"
+						+ "Luego se le pedirá que introduzca una secuencia de letras con su teclado, sin separación. \n"
 						+ "Cada letra corresponderá a una nota con una duración determinada. \n"
 						+ "Si tiene dudas sobre la correspondencia entre letras y notas, seleccione TECLAS en el menú AYUDA. \n"
 						+ "Espero que estas instrucciones le hayan sido de ayuda. \n"

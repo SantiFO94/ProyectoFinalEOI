@@ -9,7 +9,7 @@ public class ValidarNombre {
 	public static boolean comprobarNombreExistente(String nombre) {
 	boolean existe = false;
 	
-	if (MelodiaService.buscarMelodia(nombre).getNombre() != null) {
+	if (MelodiaService.read(nombre).getNombre() != null) {
 		existe= true;
 	}
 	

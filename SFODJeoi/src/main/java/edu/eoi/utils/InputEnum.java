@@ -2,8 +2,8 @@ package edu.eoi.utils;
 
 import java.util.Scanner;
 
-import edu.eoi.main.Comando;
-import edu.eoi.main.Guia;
+import edu.eoi.enums.Comando;
+import edu.eoi.enums.Guia;
 
 public class InputEnum {
 	

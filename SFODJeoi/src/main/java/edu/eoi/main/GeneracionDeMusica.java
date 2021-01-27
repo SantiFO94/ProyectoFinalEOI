@@ -1,28 +1,33 @@
 package edu.eoi.main;
 
+import edu.eoi.enums.Instrumento;
+import edu.eoi.enums.NotaEnTeclado;
 import edu.eoi.utils.InputMelodia;
 
 public class GeneracionDeMusica {
 
 	public static String traducirSecuencia(String secuenciaIntroducida) {
+
 		String secuenciaMusical = null;
 		String[] secuenciaIntroducidaSeparada = secuenciaIntroducida.toLowerCase().split("");
+
 		for (int i = 0; i < secuenciaIntroducidaSeparada.length; i++) {
-			if(secuenciaIntroducidaSeparada[i].matches("\\D+") && secuenciaIntroducidaSeparada[i].matches("\\w+")) {
+			if (secuenciaIntroducidaSeparada[i].matches("\\D+") && secuenciaIntroducidaSeparada[i].matches("\\w+")) {
 				secuenciaIntroducidaSeparada[i] = "$".concat(secuenciaIntroducidaSeparada[i]);
-			}else {
+			} else {
 				secuenciaIntroducidaSeparada[i] = "";
 			}
-			
+
 		}
 		secuenciaIntroducida = String.join(" ", secuenciaIntroducidaSeparada);
 
 		for (NotaEnTeclado nota : NotaEnTeclado.values()) {
 			secuenciaIntroducida = secuenciaIntroducida.replace("$".concat(nota.letra), nota.nota);
 		}
-		//revisar si este $ es necesario
+		// revisar si este $ es necesario
 		secuenciaMusical = secuenciaIntroducida.replace("$", "").concat(" ");
 		secuenciaMusical = InputMelodia.introducirInstrumento().concat(secuenciaMusical);
+		
 		return secuenciaMusical;
 	}
 

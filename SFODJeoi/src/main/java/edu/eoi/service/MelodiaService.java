@@ -3,33 +3,32 @@ package edu.eoi.service;
 import java.util.List;
 
 import edu.eoi.entity.Melodia;
+import edu.eoi.main.GeneracionDeMusica;
 import edu.eoi.repository.MelodiaRepositoryJDBCImpl;
-import edu.eoi.repository.MusicaRepository;
-import edu.eoi.utils.InputMelodiaUtilities;
+import edu.eoi.utils.InputMelodia;
 
 public class MelodiaService {
 
 	MelodiaRepositoryJDBCImpl MelodiaRepositoryJDBCImpl;
-	MusicaRepository MusicaRepository;
-	InputMelodiaUtilities InputMelodiaUtilities;
+	GeneracionDeMusica MusicaRepository;
+	InputMelodia InputMelodiaUtilities;
 	
 	public MelodiaService() {
 		MelodiaRepositoryJDBCImpl = new MelodiaRepositoryJDBCImpl();
 	}
 	
-	
-	public void guardarMelodia(Melodia melodia) {
+	public void guardar(Melodia melodia) {
 		this.MelodiaRepositoryJDBCImpl.save(melodia);;
 	}
 	
-	public Melodia buscarMelodia(Integer id) {
-		return this.MelodiaRepositoryJDBCImpl.read(id);
+	public Melodia read(String nombre) {
+		return this.MelodiaRepositoryJDBCImpl.read(nombre);
 	}
-	public void borrarMelodia(Melodia melodia) {
+	public void borrar(Melodia melodia) {
 		this.MelodiaRepositoryJDBCImpl.delete(melodia);
 	}
 	
-	public Melodia actualizarMelodia(Melodia melodia) {
+	public Melodia actualizar(Melodia melodia) {
 		return this.MelodiaRepositoryJDBCImpl.update(melodia);
 	}
 	
@@ -37,17 +36,4 @@ public class MelodiaService {
 		return this.MelodiaRepositoryJDBCImpl.recuperarMelodias();
 	}
 	
-	public String traducirSecuencia(String secuenciaIntroducida) {
-		return this.MusicaRepository.traducirSecuencia(secuenciaIntroducida);
-	}
-	
-	public String elegirInstrumento(String instrumentoIntroducido) {
-		return this.MusicaRepository.elegirInstrumento(instrumentoIntroducido);
-	}
-	public Melodia introducirDatosMelodia() {
-		return this.InputMelodiaUtilities.introducirDatosMelodia();
-	}
-//	public Integer introducirId() {
-//		return this.InputMelodiaUtilities.introducirId();
-//	}
 }
