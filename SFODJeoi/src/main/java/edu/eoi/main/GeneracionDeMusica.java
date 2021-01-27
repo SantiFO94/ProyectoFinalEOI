@@ -26,7 +26,10 @@ public class GeneracionDeMusica {
 		}
 		// revisar si este $ es necesario
 		secuenciaMusical = secuenciaIntroducida.replace("$", "").concat(" ");
-		secuenciaMusical = InputMelodia.introducirInstrumento().concat(secuenciaMusical);
+		String instrumento = InputMelodia.introducirInstrumento();
+		if (null != instrumento) {
+			secuenciaMusical = instrumento.concat(secuenciaMusical);
+		}
 		
 		return secuenciaMusical;
 	}
@@ -37,6 +40,9 @@ public class GeneracionDeMusica {
 			if (instrumentoIntroducido.equalsIgnoreCase(instrumento.toString())) {
 				instrumentoElegido = instrumento.codigoInstrumento;
 			}
+		}
+		if (null != instrumentoElegido) {
+			System.out.println("Ese instrumento no está disponible.");
 		}
 		return instrumentoElegido;
 	}

@@ -11,7 +11,7 @@ public class Instrucciones {
 						+ "-Instrucciones \n"
 						+ "-Comandos \n"
 						+ "-Teclas \n"
-						+ "-Instrumentos"
+						+ "-Instrumentos \n"
 						+ "-Todo \n");
 		
 		GestionMenu.elegirGuia();

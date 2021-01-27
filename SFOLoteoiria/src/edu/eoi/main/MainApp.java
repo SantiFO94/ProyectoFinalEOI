@@ -3,7 +3,7 @@ package edu.eoi.main;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.eoi.domain.PremioRepository;
+import edu.eoi.domain.GestionPremio;
 import edu.eoi.entity.Premio;
 import edu.eoi.ui.Menu;
 
@@ -15,23 +15,24 @@ public class MainApp {
 			
 			List<Premio> premiosPrincipales = new ArrayList<Premio>();
 			
-			PremioRepository.crearPremiosPrincipales(premiosPrincipales);
+			GestionPremio.crearPremiosPrincipales(premiosPrincipales);
 						
-			PremioRepository.imprimirPremios();
-			PremioRepository.imprimirTodosLosNumerosPremiados(premiosPrincipales);
+			GestionPremio.imprimirPremios();
+			GestionPremio.imprimirTodosLosNumerosPremiados(premiosPrincipales);
 			
 			switch(Menu.menuConsulta()) {
 			case PREMIOS:
-				PremioRepository.imprimirPremios();
+				
+				GestionPremio.imprimirPremios();
 				break;
 			case NUMEROS:
-				PremioRepository.imprimirTodosLosNumerosPremiados(premiosPrincipales);
+				
+				GestionPremio.imprimirTodosLosNumerosPremiados(premiosPrincipales);
 				break;
 			case COMPROBAR:
 				
 				Integer numeroAceptado = Menu.introducirNumero();
-				PremioRepository.evaluarNumeroAceptado(numeroAceptado, premiosPrincipales);
-				
+				GestionPremio.evaluarNumeroAceptado(numeroAceptado, premiosPrincipales);
 				break;
 			}
 			

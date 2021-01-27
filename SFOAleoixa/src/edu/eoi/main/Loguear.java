@@ -1,4 +1,4 @@
-package edu.eoi.repository;
+package edu.eoi.main;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class LoguearRepository {
+public class Loguear {
 	
 	//Crear y escribir nuestro documento Log
 	public static void loguear(String interlocutor, String mensaje) {

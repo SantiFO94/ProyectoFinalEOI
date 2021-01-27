@@ -6,8 +6,9 @@ import java.util.Locale;
 import java.util.Random;
 
 import edu.eoi.entity.Premio;
+import edu.eoi.enums.DineroGanado;
 
-public class PremioRepository {
+public class GestionPremio {
 
 	public static final NumberFormat nf = NumberFormat.getInstance(new Locale("da","DK"));
 	

@@ -2,6 +2,8 @@ package edu.eoi.ui;
 
 import java.util.Scanner;
 
+import edu.eoi.enums.Consulta;
+
 public class Menu {
 
 	private static final Scanner sctexto = new Scanner(System.in);

@@ -18,29 +18,34 @@ public class InputMelodia {
 
 		Melodia melodia = introducirDatosMelodia();
 		boolean repetir = true;
-
-		System.out.println("¿Quiere guardar la melodia? Si/No");
-		String eleccion = sctexto.nextLine();
+		String eleccion = "";
 		do {
+			System.out.println("¿Quiere guardar la melodia? Si/No");
+			eleccion = sctexto.nextLine();
+		
 			if (eleccion.equalsIgnoreCase("si")) {
 				MelodiaService.guardar(melodia);
 				repetir = false;
 
-			} else if (!eleccion.equalsIgnoreCase("no")) {
+			} else if (eleccion.equalsIgnoreCase("no")) {
+				repetir = false;
+			} else {
 				System.out.println("No te he entendido, por favor introduce SI o NO.");
 			}
 		} while (repetir);
 
 		repetir = true;
-
-		System.out.println("¿Quiere escuchar la melodia? Si/No");
-		eleccion = sctexto.nextLine();
 		do {
+			System.out.println("¿Quiere escuchar la melodia? Si/No");
+			eleccion = sctexto.nextLine();
+			
 			if (eleccion.equalsIgnoreCase("si")) {
 				Reproductor.reproducirMelodia(melodia);
 				repetir = false;
 			
-			} else if (!eleccion.equalsIgnoreCase("no")) {
+			} else if (eleccion.equalsIgnoreCase("no")) {
+				repetir = false;
+			} else {
 				System.out.println("No te he entendido, por favor introduce SI o NO.");
 			}
 		} while (repetir);

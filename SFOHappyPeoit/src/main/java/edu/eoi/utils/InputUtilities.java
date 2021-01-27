@@ -22,14 +22,17 @@ public class InputUtilities {
 		
 		System.out.println("CREACIÓN DE RESPONSABLE");
 		
-		Integer idResponsableAceptado = aceptarId();
-		
-		responsable.setId(idResponsableAceptado);
-		System.out.println("Introduzca el nombre:");
-		responsable.setNombre(sctexto.nextLine());
-		System.out.println("Introduzca el numero de telefono:");
-		responsable.setTelefono(scnumero.nextInt());
-		
+		Integer idResponsableAceptado = introducirId();
+		if(ComprobacionID.comprobarIDResponsableExiste(idResponsableAceptado)) {
+			System.out.println("Vualva a intentarlo:\n");
+			responsable = introducirDatosResponsable();
+		}else {
+			responsable.setId(idResponsableAceptado);
+			System.out.println("Introduzca el nombre:");
+			responsable.setNombre(sctexto.nextLine());
+			System.out.println("Introduzca el numero de telefono:");
+			responsable.setTelefono(scnumero.nextInt());
+		}
 		return responsable;
 	}
 	
@@ -43,14 +46,6 @@ public class InputUtilities {
 		}
 		
 		return id;
-	}
-	public static Integer aceptarId() {
-		Integer idResponsableAceptado = null;
-		if(ComprobacionID.comprobarIDResponsableExiste(introducirId())) {
-			System.out.println("ID ya existente, pruebe otro ID.\n");
-			idResponsableAceptado = aceptarId();
-		}
-		return idResponsableAceptado;
 	}
 
 	public static Mascota introducirDatosMascota(Integer idResponsable) {

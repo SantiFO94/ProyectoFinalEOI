@@ -5,7 +5,7 @@ public enum Comando {
 	CREAR("Crear Melodía", "Crear Melodia", "Crear"),
 	LISTA("Lista Melodías", "Lista Melodias", "Lista"),
 	REPRODUCIR("Reproducir Melodía", "Reproducir Melodia", "Reproducir"),
-	MODIFICAR("Modificar Melodía", "Modificar Meodia", "Modificar"),
+	MODIFICAR("Modificar Melodía", "Modificar Melodia", "Modificar"),
 	ELIMINAR("eliminar melodía", "eliminar melodia", "eliminar"),
 	AYUDA("Ayuda", "help", "aide"),
 	SALIR("salir", "salir", "salir");

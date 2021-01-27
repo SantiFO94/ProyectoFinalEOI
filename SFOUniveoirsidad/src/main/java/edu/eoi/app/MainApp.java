@@ -3,6 +3,9 @@ package edu.eoi.app;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.eoi.enums.Accion;
+import edu.eoi.enums.TipoBusqueda;
+import edu.eoi.enums.TipoUsuario;
 import edu.eoi.pojo.Alumno;
 import edu.eoi.pojo.PAS;
 import edu.eoi.pojo.Persona;
@@ -11,13 +14,10 @@ import edu.eoi.repository.AlumnoRepository;
 import edu.eoi.repository.JSONRepository;
 import edu.eoi.repository.PASRepository;
 import edu.eoi.repository.ProfesorRepository;
-import edu.eoi.ui.Accion;
 import edu.eoi.ui.MenuCrear;
 import edu.eoi.ui.MenuIdentificador;
 import edu.eoi.ui.MenuInicio;
 import edu.eoi.ui.MenuTipoBusqueda;
-import edu.eoi.ui.TipoBusqueda;
-import edu.eoi.ui.TipoUsuario;
 
 public class MainApp {
 
@@ -89,10 +89,12 @@ public class MainApp {
 							if(indice >= 0) {
 								pasRepo.modificar(listaPas, personas, indice);
 							}else {
-								profesorRepo.buscar(profesores, dni, null);
+								indice = profesorRepo.buscar(profesores, dni, null);
 								if(indice >= 0) {
 									profesorRepo.modificar(profesores, personas, indice);
 
+								}else {
+									System.out.println("Usuario no encontrado.");
 								}
 							}
 						}
@@ -107,7 +109,7 @@ public class MainApp {
 							if(indice >= 0) {
 								pasRepo.modificar(listaPas, personas, indice);
 							}else {
-								profesorRepo.buscar(profesores, null, usuario);
+								indice = profesorRepo.buscar(profesores, null, usuario);
 								if(indice >= 0) {
 									profesorRepo.modificar(profesores, personas, indice);
 
@@ -137,6 +139,8 @@ public class MainApp {
 					break;
 				case SALIR:
 					System.out.println("Hasta pronto.");
+					break;
+				default:
 					break;
 					
 			}

@@ -1,4 +1,4 @@
-package edu.eoi.ui;
+package edu.eoi.enums;
 
 public enum Consulta {
 

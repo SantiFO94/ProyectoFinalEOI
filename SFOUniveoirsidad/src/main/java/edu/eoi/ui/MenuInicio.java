@@ -1,5 +1,6 @@
 package edu.eoi.ui;
 
+import edu.eoi.enums.Accion;
 import edu.eoi.utils.Input;
 
 public class MenuInicio {
@@ -12,6 +13,7 @@ public class MenuInicio {
 				+ "-Modificar\n"
 				+ "-Eliminar\n"
 				+ "-Salir\n");
+		
 		Accion accion = Input.elegirAccion();
 		
 		return accion;

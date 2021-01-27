@@ -31,9 +31,9 @@ public class JSONRepository {
 			fw.write(json);
 			fw.flush();
 			fw.close();
-			System.out.println("Se ha escrito el archivo correctamente");
+			System.out.println("Se ha escrito el archivo Alumnos correctamente");
 		} catch (IOException e) {
-			System.out.println("No se pudo abrir el archivo.");
+			System.out.println("No se pudo abrir el archivo Alumnos.");
 		}
 	}
 	
@@ -49,9 +49,9 @@ public class JSONRepository {
 			fw.write(json);
 			fw.flush();
 			fw.close();
-			System.out.println("Se ha escrito el archivo correctamente");
+			System.out.println("Se ha escrito el archivo Profesores correctamente");
 		} catch (IOException e) {
-			System.out.println("No se pudo abrir el archivo.");
+			System.out.println("No se pudo abrir el archivo Profesores.");
 		}
 	}
 	
@@ -67,9 +67,9 @@ public class JSONRepository {
 			fw.write(json);
 			fw.flush();
 			fw.close();
-			System.out.println("Se ha escrito el archivo correctamente");
+			System.out.println("Se ha escrito el archivo PAS correctamente");
 		} catch (IOException e) {
-			System.out.println("No se pudo abrir el archivo.");
+			System.out.println("No se pudo abrir el archivo PAS.");
 		}
 	}
 //recuperar la informacion de un archivo JSON a una Lista

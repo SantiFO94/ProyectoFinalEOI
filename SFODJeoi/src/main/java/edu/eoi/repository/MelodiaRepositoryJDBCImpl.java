@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 import edu.eoi.controller.ValidarNombre;
 import edu.eoi.entity.Melodia;
-import edu.eoi.main.GestionMelodias;
 import edu.eoi.utils.DataUtilities;
 import edu.eoi.utils.InputMelodia;
 
@@ -120,11 +119,12 @@ public class MelodiaRepositoryJDBCImpl implements MelodiaRepository {
 					pst = con.prepareStatement("UPDATE djeoi.melodia SET nombre = ? WHERE nombre=? ");
 					pst.setString(1, valorActualizado);
 					pst.setString(2, melodia.getNombre());
+					melodia.setNombre(valorActualizado);
 				}else {
 					System.out.println("Ese nombre ya existe, escoja otro por favor.\n");
 				}
 				
-			} else if (campoIntroducido.equalsIgnoreCase("secuencia Introducida")) {
+			} else if (campoIntroducido.equalsIgnoreCase("secuencia introducida")) {
 				
 				valorActualizado = InputMelodia.introducirSecuencia();
 				pst = con.prepareStatement("UPDATE djeoi.melodia SET secuenciaintroducida = ? WHERE nombre=? ");
@@ -135,8 +135,10 @@ public class MelodiaRepositoryJDBCImpl implements MelodiaRepository {
 				System.out.println("Campo invalido");
 			}
 			
-			filasAfectadas += pst.executeUpdate();
-
+			if(null != pst) {
+				filasAfectadas += pst.executeUpdate();
+			}
+			
 		} while (!campoIntroducido.equalsIgnoreCase("salir"));
 		System.out.println("Filas actualizadas: ".concat(filasAfectadas.toString()));
 
@@ -163,9 +165,7 @@ public class MelodiaRepositoryJDBCImpl implements MelodiaRepository {
 		}
 
 		DataUtilities.closeConnection(con);
-		
-		GestionMelodias.mostrarMelodias(melodias);
-		
+				
 		return melodias;
 	}
 

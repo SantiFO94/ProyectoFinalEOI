@@ -1,5 +1,6 @@
 package edu.eoi.ui;
 
+import edu.eoi.enums.TipoBusqueda;
 import edu.eoi.utils.Input;
 
 public class MenuTipoBusqueda {

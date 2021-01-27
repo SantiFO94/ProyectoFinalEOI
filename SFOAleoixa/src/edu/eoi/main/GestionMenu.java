@@ -1,44 +1,44 @@
-package edu.eoi.repository;
+package edu.eoi.main;
 
-public class MenuRepository {
+public class GestionMenu {
 
 	public static void elegirComando() {
 
-		switch (ComandosRepository.introducirComando()) {
+		switch (GestionComandos.introducirComando()) {
 
 		case DIA:
-			ComandosRepository.decirFecha();
+			GestionComandos.decirFecha();
 			elegirComando();
 			break;
 
 		case HORA:
-			ComandosRepository.decirHora();
+			GestionComandos.decirHora();
 			elegirComando();
 			break;
 
 		case CHISTE:
-			ComandosRepository.contarChiste();
+			GestionComandos.contarChiste();
 			elegirComando();
 			break;
 
 		case CALCULADORA:
-			ComandosRepository.calcular();
+			GestionComandos.calcular();
 			elegirComando();
 			break;
 
 		case TRADUCTOR:
-			ComandosRepository.traducir();
+			GestionComandos.traducir();
 			elegirComando();
 			break;
 
 		case AYUDA:
-			ComandosRepository.help();
+			GestionComandos.help();
 			elegirComando();
 			break;
 
 		case SALIR:
 			System.out.println("¡Hasta pronto!");
-			LoguearRepository.loguear("ALEOIXA", "¡Hasta pronto!");
+			Loguear.loguear("ALEOIXA", "¡Hasta pronto!");
 			break;
 		}
 	}

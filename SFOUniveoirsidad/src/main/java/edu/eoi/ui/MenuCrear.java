@@ -1,5 +1,6 @@
 package edu.eoi.ui;
 
+import edu.eoi.enums.TipoUsuario;
 import edu.eoi.utils.Input;
 
 public class MenuCrear {

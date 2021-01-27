@@ -8,15 +8,13 @@ public class ComprobacionID {
 	
 	public static boolean comprobarIDResponsableExiste(Integer id) {
 		boolean existente = true;
-		try {
 			
-			if (ResponsableService.read(id).getId().equals(null)) {
-				throw new Exception();
-			}
-		} catch (Exception e) {
+		if (null == ResponsableService.read(id).getId()) {
 			System.out.println("Ese id no se encuentra en nuestra base de datos.\n");
-			id = null;
 			existente = false;
+		}else {
+			System.out.println("Ese id ya existe.\n");
+
 		}
 		return existente;
 	}

@@ -10,9 +10,12 @@ public class Reproductor {
 
 	public static void reproducirMelodia(Melodia melodia) {
 		
-		String secuenciaIntroducida = melodia.getSecuenciaIntroducida();
-		String secuenciaMusical = GeneracionDeMusica.traducirSecuencia(secuenciaIntroducida);
-		player.play(secuenciaMusical);
+		if (null != melodia) {
+			String secuenciaIntroducida = melodia.getSecuenciaIntroducida();
+			String secuenciaMusical = GeneracionDeMusica.traducirSecuencia(secuenciaIntroducida);
+			player.play(secuenciaMusical);
+		}
+		
 
 	}
 

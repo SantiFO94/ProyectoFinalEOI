@@ -44,6 +44,7 @@ public class GestionMenu {
 				break;
 				
 			case SALIR:
+				System.out.println("¡Hasta pronto!");
 				break;
 		}
 	}
